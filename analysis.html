@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+
+<script src='https://unpkg.com/tesseract.js@v2.0.0-alpha.13/dist/tesseract.min.js'></script>
+
+
   </head>
   <body>
 
@@ -98,6 +102,32 @@
     		</div>
     	</div>
     </section>
+
+<!-- TESSERACT SCRIPT -->
+
+<script>
+    const givenImage = firebase.database().ref(uploadedImage);
+
+    const worker = Tesseract.createWorker({
+      logger: m => console.log(m)
+    });
+    Tesseract.setLogging(true);
+    work();
+
+    async function work() {
+      await worker.load();
+      await worker.loadLanguage('eng');
+      await worker.initialize('eng');
+
+      let result = await worker.detect(givenImage);
+      console.log(result.data);
+
+      result = await worker.recognize(givenImage);
+      console.log(result.data);
+
+      await worker.terminate();
+    }
+</script>
 
     <section class="ftco-section">
     	<div class="container">
@@ -328,6 +358,9 @@
     	</div>
     </section>
 
+<!-- TESSERACT INFO -->
+
+
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
       	<div class="row mb-5 pb-5 align-items-center d-flex">
@@ -456,6 +489,8 @@
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 </script>
+
+<script src="js/tesseract-ocr.js"></script>
 
 
   </body>
