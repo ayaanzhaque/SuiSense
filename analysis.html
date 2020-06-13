@@ -38,7 +38,6 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="analysis.html" class="nav-link">Analysis</a></li>
 	          <li class="nav-item"><a class="nav-link" href="pairings.html">Pairings</a></li>
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
@@ -378,7 +377,6 @@
               <h2 class="ftco-heading-2">Navigational</h2>
               <ul class="list-unstyled">
                 <li><a href="index.html" class="py-2 d-block">Home</a></li>
-                <li><a href="about.html" class="py-2 d-block">About</a></li>
                 <li><a href="analysis.html" class="py-2 d-block">Analysis</a></li>
                 <li><a href="pairings.html" class="py-2 d-block">Pairings</a></li>
                 <li><a href="blog.html" class="py-2 d-block">Blog</a></li>
@@ -435,30 +433,30 @@
   <script src="js/main.js"></script>
 
 
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-       https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC9SzHN2ds9kTrh7FEN4uIua9b6JxirM4E",
+    authDomain: "suisense-f2c15.firebaseapp.com",
+    databaseURL: "https://suisense-f2c15.firebaseio.com",
+    projectId: "suisense-f2c15",
+    storageBucket: "suisense-f2c15.appspot.com",
+    messagingSenderId: "225751274382",
+    appId: "1:225751274382:web:ef500d48017da95d300adf",
+    measurementId: "G-933XDW7HM9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyC9SzHN2ds9kTrh7FEN4uIua9b6JxirM4E",
-      authDomain: "suisense-f2c15.firebaseapp.com",
-      databaseURL: "https://suisense-f2c15.firebaseio.com",
-      projectId: "suisense-f2c15",
-      storageBucket: "suisense-f2c15.appspot.com",
-      messagingSenderId: "225751274382",
-      appId: "1:225751274382:web:ef500d48017da95d300adf",
-      measurementId: "G-933XDW7HM9"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
 
   </body>
 </html>
