@@ -1,62 +1,129 @@
+function initMap() {
+  var saratoga = {lat: 37.2664, lng: -122.0296};
+  var gunn = {lat: 37.4025, lng: -122.1334};
+  var mv = {lat: 37.3150, lng: -122.0562};
+  var jl = {lat: 37.2924, lng: -122.0011};
+  var prospect = {lat: 37.5899, lng: -122.0269};
 
-var google;
+  var icons = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
-function init() {
-    // Basic options for a simple Google Map
-    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-    // var myLatlng = new google.maps.LatLng(40.71751, -73.990922);
-    var myLatlng = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
-    // 39.399872
-    // -8.224454
-    
-    var mapOptions = {
-        // How zoomed in you want the map to start at (always required)
-        zoom: 7,
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: saratoga
+  });
 
-        // The latitude and longitude to center the map (always required)
-        center: myLatlng,
+  var contentString1 = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Saratoga High School</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Excess Device Type:</b> Chromebooks' +
+      '<p><b>Excess Device Count:</b> 2600'+
+      '<p><b>Preferred Dates:</b> 6/5/2020-6/13/2020'+
+      '<p><b>Bio Message:</b> Willing to work with any Bay Area Schools in need of devices.'+
+    '</div>'+
+      '</div>';
 
-        // How you would like to style the map. 
-        scrollwheel: false,
-        styles: [
-            {
-                "featureType": "administrative.country",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "visibility": "simplified"
-                    },
-                    {
-                        "hue": "#ff0000"
-                    }
-                ]
-            }
-        ]
-    };
+      var infowindow1 = new google.maps.InfoWindow({
+        content: contentString1
+      });
 
-    
+      var marker1 = new google.maps.Marker({
+        position: saratoga,
+        map: map,
+      });
 
-    // Get the HTML DOM element that will contain your map 
-    // We are using a div with id="map" seen below in the <body>
-    var mapElement = document.getElementById('map');
-
-    // Create the Google Map using out element and options defined above
-    var map = new google.maps.Map(mapElement, mapOptions);
-    
-    var addresses = ['New York'];
-
-    for (var x = 0; x < addresses.length; x++) {
-        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
-            var p = data.results[0].geometry.location
-            var latlng = new google.maps.LatLng(p.lat, p.lng);
-            new google.maps.Marker({
-                position: latlng,
+      marker1.addListener('click', function() {
+        infowindow1.open(map, marker1);
+      });
+/*
+      var contentString2 = '<div id="content">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h1 id="firstHeading" class="firstHeading">Gunn High School</h1>'+
+          '<div id="bodyContent">'+
+          '<p><b>Excess Device Type:</b> MacBooks' +
+          '<p><b>Excess Device Count:</b> 1500'+
+          '<p><b>Preferred Dates:</b> 6/12/2020-6/20/2020'+
+          '<p><b>Bio Message:</b> Excited to work with any Bay Area Schools to help students.'+
+        '</div>'+
+          '</div>';
+          var infowindow2 = new google.maps.InfoWindow({
+            content: contentString2
+          });
+          var marker2 = new google.maps.Marker({
+            position: gunn,
+            map: map,
+            icon: icons
+          });
+          marker2.addListener('click', function() {
+            infowindow2.open(map, marker2);
+          });
+          var contentString3 = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h1 id="firstHeading" class="firstHeading">Monta Vista High School</h1>'+
+              '<div id="bodyContent">'+
+              '<p><b>Excess Device Type:</b> iPads' +
+              '<p><b>Excess Device Count:</b> 1950'+
+              '<p><b>Preferred Dates:</b> 5/30/2020-6/1/2020'+
+              '<p><b>Bio Message:</b> If any schools need more devices for their students, please do not hesistate to reach out.'+
+            '</div>'+
+              '</div>';
+              var infowindow3 = new google.maps.InfoWindow({
+                content: contentString3
+              });
+              var marker3 = new google.maps.Marker({
+                position: mv,
                 map: map,
-                icon: 'images/loc.png'
-            });
-
-        });
-    }
-    
+                icon: icons
+              });
+              marker3.addListener('click', function() {
+                infowindow3.open(map, marker3);
+              });
+              var contentString4 = '<div id="content">'+
+                  '<div id="siteNotice">'+
+                  '</div>'+
+                  '<h1 id="firstHeading" class="firstHeading">James Logan High School</h1>'+
+                  '<div id="bodyContent">'+
+                  '<p><b>Device Type Needed:</b> Any' +
+                  '<p><b>Device Count Needed:</b> 1400'+
+                  '<p><b>Preferred Dates:</b> 6/10/10-6/16/2020'+
+                  '<p><b>Bio Message:</b> Would appreciate any support, open to any devices for our students.'+
+                '</div>'+
+                  '</div>';
+                  var infowindow4 = new google.maps.InfoWindow({
+                    content: contentString4
+                  });
+                  var marker4 = new google.maps.Marker({
+                    position: jl,
+                    map: map,
+                    title: 'Uluru (Ayers Rock)'
+                  });
+                  marker4.addListener('click', function() {
+                    infowindow4.open(map, marker4);
+                  });
+                  var contentString5 = '<div id="content">'+
+                      '<div id="siteNotice">'+
+                      '</div>'+
+                      '<h1 id="firstHeading" class="firstHeading">Prospect High School</h1>'+
+                      '<div id="bodyContent">'+
+                      '<p><b>Device Type Needed:</b> Chromebooks' +
+                      '<p><b>Device Count Needed:</b> 2100'+
+                      '<p><b>Preferred Dates:</b> 6/7/10-6/20/2020'+
+                      '<p><b>Bio Message:</b> If any schools have excess Chromebooks that would be great.'+
+                    '</div>'+
+                      '</div>';
+                      var infowindow5 = new google.maps.InfoWindow({
+                        content: contentString5
+                      });
+                      var marker5 = new google.maps.Marker({
+                        position: prospect,
+                        map: map,
+                        title: 'Uluru (Ayers Rock)'
+                      });
+                      marker5.addListener('click', function() {
+                        infowindow5.open(map, marker5);
+                      });
+*/
 }
-google.maps.event.addDomListener(window, 'load', init);
