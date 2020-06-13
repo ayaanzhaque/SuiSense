@@ -49,9 +49,9 @@ def success():
     if request.method == "GET":
         f = request.files['file']
         f.save(f.filename)
-        h5file =  "/home/suiSense/mysite/model.h5"
+        h5file =  "/home/suiSense/mysite/model2.h5"
 
-        model = joblib.load("model2.h5")
+        model = joblib.load(h5file)
         Class = prediction(model, text)
         diagnoses.clear()
         if (Class == 1):
