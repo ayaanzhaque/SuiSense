@@ -33,11 +33,6 @@ from sklearn.metrics import confusion_matrix, classification_report, accuracy_sc
 import pickle
 import joblib
 
-# def get_filenames():
-#     global path
-#     path = r"test"
-#     return os.listdir(path)
-
 comments = []
 predictions = []
 
@@ -55,28 +50,46 @@ def success():
         f = request.files['file']
         f.save(f.filename)
         h5file =  "/home/suiSense/mysite/model.h5"
-        with h5py.File(h5file,'r') as fid:
-            model = load_model(fid)
-            Class = prediction(model, f.filename)
-            diagnoses.clear()
-            if (Class == 0):
-                today = str(get_pst_time())
-                predictions.append(today + ": According to our algorithm, it is likely that you have glaucoma. Please contact a medical professional as soon as possible for advice.")
-                return f.filename + ": It is likely that you have glaucoma. Please contact a medical professional as soon as possible for advice."
-            else:
-                today = str(get_pst_time())
-                predictions.append(today + ": According to our algorithm, you do not have glaucoma! If you have further questions, please contact a medical professional.")
-                return f.filename + ": According to our algorithm, you do not have glaucoma! If you have further questions, please contact a medical professional."
 
-def prediction(m, file):
-    # list_of_files = glob.glob('data/test/*')
-    # latest_file = max(list_of_files, key=os.path.getctime)
-    img = cv2.imread(file)
-    img = autoroi(img)
-    img = cv2.resize(img, (256, 256))
-    img = np.reshape(img, [1, 256, 256, 3])
+        model = joblib.load("model2.h5")
+        Class = prediction(model, text)
+        diagnoses.clear()
+        if (Class == 1):
+            today = str(get_pst_time())
+            predictions.append(today + ": According to our algorithm, the text has been classified as suicidal.")
+            return f.filename + ": According to our algorithm, the text has been classified as suicidal."
+        else:
+            today = str(get_pst_time())
+            predictions.append(today + ": According to our algorithm, the text has been classified as depression, not suicidal.")
+            return f.filename + ": According to our algorithm, the text has been classified as depression, not suicidal."
 
-    Class = m.predict(img)
-    Class = prob.argmax(axis=-1)
+def prediction(model, text):
+    text_array = pd.Series(text)
+    processed_text = processing_text(text_array)
 
-    return(Class)
+    processed_array = pd.Series(processed_text)
+
+    tvec_optimised = TfidfVectorizer(max_features=70, ngram_range=(1, 3),stop_words = 'english')
+    processed_text_tvec = tvec_optimised.fit_transform(processed_array).todense()
+
+    prediction = model.predict(processed_text_tvec)
+
+    return(prediction[0])
+
+def processing_text(series_to_process):
+    new_list = []
+    tokenizer = RegexpTokenizer(r'(\w+)')
+    lemmatizer = WordNetLemmatizer()
+
+    for i in range(len(series_to_process)):
+        # tokenized item in a new list
+        dirty_string = (series_to_process)[i].lower()
+        words_only = tokenizer.tokenize(dirty_string) # words_only is a list of only the words, no punctuation
+        #Lemmatize the words_only
+        words_only_lem = [lemmatizer.lemmatize(i) for i in words_only]
+        # removing stop words
+        words_without_stop = [i for i in words_only_lem if i not in stopwords.words("english")]
+        # return seperated words
+        long_string_clean = " ".join(word for word in words_without_stop)
+        new_list.append(long_string_clean)
+        return new_list
