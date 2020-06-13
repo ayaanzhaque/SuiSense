@@ -55,8 +55,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-start">
           <div class="col-md-8 ftco-animate text-center text-md-left mb-5">
-          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Hosting</span></p>
-            <h1 class="mb-3 bread">Web Hosting</h1>
+          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Pairings</span></p>
+            <h1 class="mb-3 bread">Your Pairings</h1>
           </div>
         </div>
       </div>
@@ -64,36 +64,25 @@
 
     <section class="ftco-section">
     	<div class="container">
-    		<div class="row">
-    			<div class="col-md-4 text-center ftco-animate">
-    				<div class="steps">
-    					<div class="icon mb-4 d-flex justify-content-center align-items-center">
-    						<span class="flaticon-cloud-computing"></span>
-    					</div>
-    					<h3>Choose Your Plan</h3>
-    					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-    				</div>
-    			</div>
-    			<div class="col-md-4 text-center ftco-animate">
-    				<div class="steps">
-    					<div class="icon mb-4 d-flex justify-content-center align-items-center">
-    						<span class="flaticon-customer-service"></span>
-    					</div>
-    					<h3>Create Your Account</h3>
-    					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-    				</div>
-    			</div>
-    			<div class="col-md-4 text-center ftco-animate">
-    				<div class="steps">
-    					<div class="icon mb-4 d-flex justify-content-center align-items-center">
-    						<span class="flaticon-database"></span>
-    					</div>
-    					<h3>Launch</h3>
-    					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-    				</div>
-    			</div>
-    		</div>
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2 class="mb-4">Therapist:</h2>
+            <p>Please enter your information to be paired with someone who requires your services. </p>
+          </div>
+        </div>
     	</div>
+      <div class="contact-form">
+      <div id="errormessage"></div>
+      <head>
+      <center>
+        <label>Please upload a profile image of yourself:</label>
+        </center>
+        <center>
+  <label for="file-upload" class="custom-file-upload">
+    <i class="fa fa-cloud-upload"></i> Custom Upload<br>
+</label>
+<input id="file-upload" type="file"/>
+</center>
     </section>
 
     <section class="ftco-section bg-light">
@@ -118,6 +107,7 @@
 		            <span class="price"><sup>$</sup> <span class="number">0<small class="per">/mo</small></span>
 		            <span class="excerpt d-block">100% free. Forever</span>
 		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+
 		            <ul class="pricing-text mb-4">
 		              <li><strong>150 GB</strong> Bandwidth</li>
 		              <li><strong>100 GB</strong> Storage</li>
@@ -135,6 +125,7 @@
 		            <span class="price"><sup>$</sup> <span class="number">19<small class="per">/mo</small></span></span>
 		            <span class="excerpt d-block">All features are included</span>
 		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+
 		            <ul class="pricing-text mb-4">
 		              <li><strong>450 GB</strong> Bandwidth</li>
 		              <li><strong>400 GB</strong> Storage</li>
@@ -152,6 +143,7 @@
 		            <span class="price"><sup>$</sup> <span class="number">49<small class="per">/mo</small></span></span>
 		            <span class="excerpt d-block">All features are included</span>
 		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+
 		            <ul class="pricing-text mb-4">
 		              <li><strong>250 GB</strong> Bandwidth</li>
 		              <li><strong>200 GB</strong> Storage</li>
@@ -169,6 +161,7 @@
 		            <span class="price"><sup>$</sup> <span class="number">99<small class="per">/mo</small></span></span>
 		            <span class="excerpt d-block">All features are included</span>
 		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+
 		            <ul class="pricing-text mb-4">
 		              <li><strong>450 GB</strong> Bandwidth</li>
 		              <li><strong>400 GB</strong> Storage</li>
@@ -179,6 +172,7 @@
 	            </div>
 	          </div>
 	        </div>
+
 -->
 	      </div>
     	</div>
@@ -356,7 +350,7 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4 bg-primary p-4">
-              <h2 class="ftco-heading-2">CoHost</h2>
+              <h2 class="ftco-heading-2">SuiSense</h2>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
               <ul class="ftco-footer-social list-unstyled mb-0">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
@@ -440,30 +434,30 @@
   <script src="js/main.js"></script>
 
 
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-       https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC9SzHN2ds9kTrh7FEN4uIua9b6JxirM4E",
+    authDomain: "suisense-f2c15.firebaseapp.com",
+    databaseURL: "https://suisense-f2c15.firebaseio.com",
+    projectId: "suisense-f2c15",
+    storageBucket: "suisense-f2c15.appspot.com",
+    messagingSenderId: "225751274382",
+    appId: "1:225751274382:web:ef500d48017da95d300adf",
+    measurementId: "G-933XDW7HM9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyC9SzHN2ds9kTrh7FEN4uIua9b6JxirM4E",
-      authDomain: "suisense-f2c15.firebaseapp.com",
-      databaseURL: "https://suisense-f2c15.firebaseio.com",
-      projectId: "suisense-f2c15",
-      storageBucket: "suisense-f2c15.appspot.com",
-      messagingSenderId: "225751274382",
-      appId: "1:225751274382:web:ef500d48017da95d300adf",
-      measurementId: "G-933XDW7HM9"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
 
   </body>
 </html>
