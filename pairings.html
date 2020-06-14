@@ -69,7 +69,7 @@
  /* tab css */
 
 #colorstrip{
-    width: 100%; height: 55px;
+    width: 100%; height: 60px;
     border: 1px solid #dfe0e0;
     background-color: #ffffff;
 }
@@ -98,18 +98,20 @@ display: center;
   padding: 14px 16px;
   transition: 0.3s;
   font-size: 17px;
-  color: #ffffff;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #6a28ff;
+  background-color: #ffffff;
+  border: 1px solid #6a28ff;
+  color: #6a28ff;
 }
 
 
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: #6a28ff;
+  color: #ffffff;
 }
 
 /* Style the tab content */
@@ -147,8 +149,8 @@ display: center;
    <div id="colorstrip"/>
 
          <div class="tab">
-           <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Device Donor</button>
-           <button class="tablinks" onclick="openCity(event, 'Paris')">Device Recipient</button>
+           <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Therapist</button>
+           <button class="tablinks" onclick="openCity(event, 'Paris')">Patient</button>
          </div>
        </center>
 
@@ -226,47 +228,63 @@ display: center;
                <div id="Paris" class="tabcontent">
                  <center>
                  <form id="markerForm" method="post" role="form" class="contactForm">
-                   <div class="col-md-3"></div>
-                   <div class="col-md-3"></div>
-                   <div class="col-md-6 col-md-offset-3">
-                     <label>Please upload a profile image of yourself here: </label>
-                         <label for="file-upload" class="custom-file-upload">
-                             Custom Upload
-                         </label>
+                   <label>Please upload a profile image of yourself here: </label>
+                       <label for="file-upload" class="custom-file-upload">
+                           Custom Upload
+                       </label>
 
-                         <br>
-                         <br>
-                         <input id="file-upload" type="file"/>
+                       <br>
+                       <br>
+                       <input id="file-upload" type="file"/>
 
-                           <div class="col-md-6 pr-md-5">
-                             <form action="#">
-                               <div class="form-group">
-                                 <input type="text" class="form-control" placeholder="Your Name">
-                               </div>
-                               <div class="form-group">
-                                 <input type="text" class="form-control" placeholder="Your Email">
-                               </div>
-                               <div class="form-group">
-                                 <input type="text" class="form-control" placeholder="Your Phone Number">
-                               </div>
-                               <div class="form-group">
-                                 <input type="text" class="form-control" placeholder="Your Office Address">
-                               </div>
-                               <div class="form-group">
-                                 <input type="text" class="form-control" placeholder="Your Availability Hours (Dates/Times)">
-                               </div>
-                               <div class="form-group">
-                                 <input type="text" class="form-control" placeholder="Therapist Type">
-                               </div>
-                               <div class="form-group">
-                                 <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Your Bio"></textarea>
-                               </div>
-                               <div class="form-group">
-                                 <input type="submit" value="Submit Form" class="btn btn-primary py-3 px-5">
-                               </div>
-                             </form>
+                         <div class="col-md-6 pr-md-5">
+                           <form action="#">
+                             <div class="form-group">
+                               <input type="text" class="form-control" placeholder="Your Name">
+                             </div>
+                             <div class="form-group">
+                               <input type="text" class="form-control" placeholder="Your Email">
+                             </div>
+                             <div class="form-group">
+                               <input type="text" class="form-control" placeholder="Your Phone Number">
+                             </div>
+                             <div class="form-group">
+                               <input type="text" class="form-control" placeholder="Your Office Address">
+                             </div>
+                             <div class="form-group">
+                               <input type="text" class="form-control" placeholder="Your Availability Hours (Dates/Times)">
+                             </div>
+                             <div class="form-group">
+                               <input type="text" class="form-control" placeholder="Therapist Type">
+                             </div>
+                             <div class="form-group">
+                               <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Your Bio"></textarea>
+                             </div>
+                             <div class="form-group">
+                               <input type="button" value="Submit Form" class="btn btn-primary py-3 px-5">
+                             </div>
+                           </form>
 
 
+                       </div>
+
+
+                     <script>
+                       function testSubmitFunction() {
+                         document.getElementById("hometown").style.display = "block";
+                       }
+                     </script>
+
+
+                   </div>
+                 </form>
+
+       <p></p>
+
+                 <div id="hometown" style="display: none">
+                     <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
+                 </div>
+               </center>
                          </div>
 
        <script>
@@ -274,7 +292,6 @@ display: center;
            document.getElementById("hometownTwo").style.display = "block";
          }
        </script>
-                     <button class="formSubmitButton" type="button" onClick="initMapTwo();testSubmitFunctionTwo()">Submit</button>
                    </div>
                  </form>
          <p class="null"></p>
