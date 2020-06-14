@@ -1,14 +1,13 @@
+from flask import *
 
-# A very simple Flask Hello World app for you to get started with...
-
-from flask import Flask, redirect, render_template, request, url_for
 import os
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
 # model imports
 from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer, TfidfVectorizer
@@ -23,44 +22,29 @@ from sklearn.metrics import confusion_matrix, classification_report, accuracy_sc
 import pickle
 import joblib
 
-# NLP Imports
-import nltk
-nltk.download('wordnet')
-nltk.download('stopwords')
-from nltk.tokenize import RegexpTokenizer
-from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords
-import re
-
-text = []
+comments = []
 predictions = []
 
+@app.route('/prediction')
+def uploadMalaria():
+    return render_template("prediction.html")
+
 @app.route("/", methods=["GET", "POST"])
-def index():
-    if request.method == "GET":
-        return render_template("userForm.html", predictions=predictions)
-
-    else:
-        text.append(request.form["contents"])
-        success()
-        return redirect(url_for('index'))
-
-
-
 def success():
-    if request.method == "GET":
+    if request.method == "POST":
         f = request.files['file']
         f.save(f.filename)
         h5file =  "/home/suiSense/mysite/model2.h5"
 
         model = joblib.load(h5file)
-        Class = prediction(model, text)
+        Class = prediction(model, request.form['content'])
+        diagnoses.clear()
         if (Class == 1):
             predictions.append("According to our algorithm, the text has been classified as suicidal.")
-            return f.filename + ": According to our algorithm, the text has been classified as suicidal."
+            return f.filename + "According to our algorithm, the text has been classified as suicidal."
         else:
             predictions.append("According to our algorithm, the text has been classified as depression, not suicidal.")
-            return f.filename + ": According to our algorithm, the text has been classified as depression, not suicidal."
+            return f.filename + "According to our algorithm, the text has been classified as depression, not suicidal."
 
 def prediction(model, text):
     text_array = pd.Series(text)

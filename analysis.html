@@ -97,6 +97,7 @@
         <div class="col-md-7 text-center heading-section ftco-animate">
           <center>
           <h2 class="mb-4">Analyze your text</h2>
+          <hr>
           </center>
         </div>
       </div>
@@ -112,6 +113,7 @@
             <div class="col-md-7 text-center heading-section ftco-animate">
               <h2 class="mb-4"> Stage Progression Form</h2>
               <p>Please fill out the data below for a more detailed analysis.</p>
+              <hr>
             </div>
           </div>
         </div>
@@ -202,17 +204,42 @@
             </div>
 
             <script>
-        function randomizeDisplay() {
-
+        function progressionOutput() {
+          document.getElementById("hometowntwo").style.display === "none"
         }
       </script>
 
 
             <div class="form-group">
-              <button class="btn btn-primary py-3 px-5" type="button" onClick="testSubmitFunctionTwo()">Submit Form</button>
+              <button class="btn btn-primary py-3 px-5" type="button" onClick="progressionOutput()">Submit Form</button>
             </div>
           </form>
 
+
+          <style>
+          .hometown {
+          color: #000000;
+            background: #b1f587;
+          }
+
+          .hometowntwo {
+            display: none;
+          }
+
+          </style>
+          <center>
+            <div id="hometowntwo" style="display: block">
+              <div class="container">
+                <div class="row justify-content-center mb-5">
+                  <div class="col-md-7 text-center heading-section ftco-animate">
+                    <h2 class="mb-4">Output</h2>
+                    <hr>
+                    <p class="hometown">You have been classified in Stage 3: High Self-Awareness.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </center>
 
       </div>
     </center>
@@ -220,7 +247,9 @@
 
   </section>
 
+<section>
 
+</section>
 
 <!-- TESSERACT INFO -->
 
