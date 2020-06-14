@@ -1,24 +1,14 @@
-from flask import *
-from datetime import *
-from pytz import *
 
-def get_pst_time():
-    date_format='%m/%d/%Y %H:%M:%S'
-    date = datetime.now(tz=utc)
-    date = date.astimezone(timezone('US/Pacific'))
-    pstDateTime=date.strftime(date_format)
-    return pstDateTime
+# A very simple Flask Hello World app for you to get started with...
 
-
+from flask import Flask, redirect, render_template, request, url_for
 import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 # model imports
 from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer, TfidfVectorizer
@@ -33,16 +23,28 @@ from sklearn.metrics import confusion_matrix, classification_report, accuracy_sc
 import pickle
 import joblib
 
-comments = []
+# NLP Imports
+import nltk
+nltk.download('wordnet')
+nltk.download('stopwords')
+from nltk.tokenize import RegexpTokenizer
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
+import re
+
+text = []
 predictions = []
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
-        return render_template("userForm.html", comments=comments)
+        return render_template("userForm.html", predictions=predictions)
 
-    comments.append(request.form["contents"])
-    return redirect(url_for('index'))
+    else:
+        text.append(request.form["contents"])
+        success()
+        return redirect(url_for('index'))
+
 
 
 def success():
@@ -53,14 +55,11 @@ def success():
 
         model = joblib.load(h5file)
         Class = prediction(model, text)
-        diagnoses.clear()
         if (Class == 1):
-            today = str(get_pst_time())
-            predictions.append(today + ": According to our algorithm, the text has been classified as suicidal.")
+            predictions.append("According to our algorithm, the text has been classified as suicidal.")
             return f.filename + ": According to our algorithm, the text has been classified as suicidal."
         else:
-            today = str(get_pst_time())
-            predictions.append(today + ": According to our algorithm, the text has been classified as depression, not suicidal.")
+            predictions.append("According to our algorithm, the text has been classified as depression, not suicidal.")
             return f.filename + ": According to our algorithm, the text has been classified as depression, not suicidal."
 
 def prediction(model, text):
