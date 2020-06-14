@@ -1,37 +1,24 @@
-from flask import *
 
-import os
+# A very simple Flask Hello World app for you to get started with...
+
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# model imports
-from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer, TfidfVectorizer
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LogisticRegression
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, roc_auc_score
-import pickle
-import joblib
-
-comments = []
-predictions = []
-
-@app.route('/prediction')
-def uploadMalaria():
-    return render_template("prediction.html")
-
 @app.route("/", methods=["GET", "POST"])
+def upload():
+    return render_template("userForm.html")
+
+@app.route("/success",methods=["POST"])
 def success():
-    if request.method == "POST":
+    global st
+    realSuicidal = "According to our algorithm, the text has been classified as suicidal."
+    st=request.form['contents']
+    return render_template("success.html",contents=st)
+
+@app.route("/")
+def success():
         f = request.files['file']
         f.save(f.filename)
         h5file =  "/home/suiSense/mysite/model2.h5"
