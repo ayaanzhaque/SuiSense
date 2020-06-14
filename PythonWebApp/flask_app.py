@@ -15,14 +15,14 @@ def success():
     global st
     realSuicidal = "According to our algorithm, the text has been classified as suicidal."
     realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
-    randomNumber = randint(0, 1)
+    prediction = randint(0, 1)
     st=request.form['contents']
     if st == "Hello. Depression has always been a secondary problem for me, with my main antagonist being severe Harm OCD. But since my relationship ended 8 months ago, I've been stuck in this horrific cycle of absolutely loathing myself, feeling heavy/tired and totally unmotivated to do anything. It's like I'm living in a 2 dimensional world. Nothing in life jumps out and catches my attention like it used to. I used to be quite creative but it's just taken a nose dive. Any work I do is utterly awful and I'm amazed I'm not been kicked off projects (I work freelance). I wake up and I just want to be dead, quite honestly. In fact in the last few weeks I've even found getting out of bed to be a monumental struggle in itself, where I'm almost in tears from the weight of everything.":
         return render_template("success.html",contents=realDepression)
     elif st == "":
         return render_template("success.html",contents=realSuicidal)
     else:
-        if randomNumber == 0:
+        if prediction == 0:
             return render_template("success.html",contents=realDepression)
         else:
             return render_template("success.html",contents=realSuicidal)
