@@ -199,8 +199,25 @@
 
 <script>
             function testSubmitFunction() {
+              var randomNumber = Math.floor(Math.random() * 5);
+
+              if (randomNumber == 0) {
+                document.getElementById("htmlRandomNumber").textContent = "You have been classified in Stage 1: Falling short of expectations";
+              } else if (randomNumber == 1) {
+                document.getElementById("htmlRandomNumber").textContent = "You have been classified in Stage 2: Attributions to self";
+              } else if (randomNumber == 2) {
+                document.getElementById("htmlRandomNumber").textContent = "You have been classified in Stage 3: High Self-Awareness and Self-Doubt.";
+              } else if (randomNumber == 3) {
+                document.getElementById("htmlRandomNumber").textContent = "You have been classified in Stage 4: Negative Affect";
+              } else if (randomNumber == 4) {
+                document.getElementById("htmlRandomNumber").textContent = "You have been classified in Stage 5: Cognitive Deconstruction";
+              } else {
+                document.getElementById("htmlRandomNumber").textContent = "You have been classified in Stage 6: Disinhibition";
+              }
+
             document.getElementById("hometown").style.display = "block";
           }
+
         </script>
 
 <button class="btn btn-primary py-3 px-5" type="button" onClick="testSubmitFunction()">Submit Form</button>
@@ -215,7 +232,8 @@
                 <hr>
               </div>
             </div>
-                              <p class="hometown">You have been classified in Stage 3: High Self-Awareness and Self-Doubt.</p>
+
+                              <p class="hometown" id="htmlRandomNumber"></p>
                           </div>
 
       </div>
