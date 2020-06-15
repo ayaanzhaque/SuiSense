@@ -51,22 +51,44 @@
     <!-- END nav -->
 
 
-    <div class="hero-wrap js-fullheight">
-      <div class="overlay"></div>
-      <div class="container-fluid px-0">
-      	<div class="row d-md-flex no-gutters slider-text align-items-left js-fullheight justify-content-end">
-	      	<img class="one-fourth js-fullheight align-end order-md-last img-fluid" src="images/altHomeImage.png" alt="">
-	        <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
-	        	<div class="text mt-5">
-	            <h1 class="mb-1"><span>SuiSense</h1>
-	            <p>Using Natural Language Processing (NLP) to distinguish suicidal messages and provide personalized support.</p>
-	            <p><a href="analysis.html" class="btn btn-primary px-4 py-3">Get Started</a></p>
-	          </div>
-	        </div>
-	    	</div>
-      </div>
-    </div>
+        <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+        }
 
+        .hero-image {
+          background-image:url("images/altHomeImage.png");
+          height: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          position: relative;
+        }
+
+        .hero-text {
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        </style>
+
+        <div class="hero-image">
+          <div class="hero-text">
+            <div class="text-center heading-section ftco-animate">
+              <h2 class="mb-2">SuiSense</h2>
+                      </div>
+                      <center>
+                                <div class="col-md-7 ftco-animate">
+            <p>Using Natural Language Processing (NLP) to distinguish suicidal messages and provide personalized support.</p>
+          </div>
+        </center>
+            <p><a href="analysis.html" class="btn btn-primary px-4 py-3">Get Started</a></p>
+          </div>
+        </div>
 
 
 
