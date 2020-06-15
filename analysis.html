@@ -144,10 +144,11 @@
       <br>
       <br>
 
+
         <div class="col-md-6 pr-md-5">
           <form action="#">
             <div class="form-group">
-              <select class="form-control">
+              <select class="form-control" id="biologicalsexstatus">
                 <option value="volvo">*Biological sex status*</option>
                 <option value="volvo">Male</option>
                 <option value="saab">Female</option>
@@ -156,7 +157,7 @@
               </select>
             </div>
             <div class="form-group">
-            <select class="form-control">
+            <select class="form-control" id="racialstatus">
               <option value="volvo">*Racial Status*</option>
               <option value="volvo">White</option>
               <option value="saab">Black or African American</option>
@@ -167,7 +168,7 @@
             </select>
           </div>
             <div class="form-group">
-              <select class="form-control">
+              <select class="form-control" id="sexualitypreference">
                 <option value="volvo">*Sexuality Preference*</option>
                 <option value="volvo">Heterosexual</option>
                 <option value="saab">LGBTQ+</option>
@@ -176,7 +177,7 @@
               </select>
             </div>
             <div class="form-group">
-              <select class="form-control">
+              <select class="form-control" id="employmentstatus">
                 <option value="volvo">*Employment status*</option>
                 <option value="volvo">Stable job</option>
                 <option value="saab">Tense work environment</option>
@@ -185,7 +186,7 @@
               </select>
             </div>
             <div class="form-group">
-              <select class="form-control">
+              <select class="form-control" id="affectedbycovid">
                 <option value="volvo">*Affected by COVID-19 pandemic*</option>
                 <option value="volvo">Health problems</option>
                 <option value="saab">Unemployed</option>
@@ -194,7 +195,7 @@
               </select>
             </div>
             <div class="form-group">
-              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Additional information (our system will attempt to use this information in your analysis)"></textarea>
+              <textarea name="" id="additionalInformation" cols="30" rows="7" class="form-control" placeholder="Additional information (our system will attempt to use this information in your analysis)"></textarea>
             </div>
 
 <script>
@@ -215,7 +216,34 @@
                 document.getElementById("htmlRandomNumber").textContent = "You have been classified in Stage 6: Disinhibition";
               }
 
-            document.getElementById("hometown").style.display = "block";
+var a = document.getElementById("biologicalsexstatus");
+var b = document.getElementById("racialstatus");
+var c = document.getElementById("sexualitypreference");
+var d = document.getElementById("employmentstatus");
+var e = document.getElementById("affectedbycovid");
+
+var textOne = a.options[a.selectedIndex].text;
+var textTwo = b.options[b.selectedIndex].text;
+var textThree = c.options[c.selectedIndex].text;
+var textFour = d.options[d.selectedIndex].text;
+var textFive = e.options[e.selectedIndex].text;
+
+if (textOne == "*Biological sex status*") {
+document.getElementById("htmlRandomNumber").textContent = "Your form is incomplete. Please fill out all fields before submitting.";
+} else if (textTwo == "*Racial Status*") {
+document.getElementById("htmlRandomNumber").textContent = "Your form is incomplete. Please fill out all fields before submitting.";
+} else if (textThree == "*Sexuality Preference*") {
+document.getElementById("htmlRandomNumber").textContent = "Your form is incomplete. Please fill out all fields before submitting.";
+} else if (textFour == "*Employment status*") {
+document.getElementById("htmlRandomNumber").textContent = "Your form is incomplete. Please fill out all fields before submitting.";
+} else if (textFive == "*Affected by COVID-19 pandemic*") {
+document.getElementById("htmlRandomNumber").textContent = "Your form is incomplete. Please fill out all fields before submitting.";
+}
+
+    document.getElementById("hometown").style.display = "block";
+
+
+
           }
 
         </script>
