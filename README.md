@@ -4,9 +4,9 @@
 
 Using NLP to distinguish suicidal messages and provide personalized support.
 
-**Second Place Overall
+**Second Place Overall**
 
-**Honorable Mention @ MLH Summer League SHDH
+**Honorable Mention @ MLH Summer League SHDH**
 
 ## Overview of our Project
 
