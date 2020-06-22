@@ -4,7 +4,7 @@
 
 Using NLP to distinguish suicidal messages and provide personalized support.
 
-**Second Place Overall**
+**Second Place Overall @ Geomhacks 2020**
 
 **Honorable Mention @ MLH Summer League SHDH**
 
