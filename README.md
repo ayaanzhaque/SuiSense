@@ -8,6 +8,8 @@ Using NLP to distinguish suicidal messages and provide personalized support.
 
 **Honorable Mention @ MLH Summer League SHDH**
 
+Demo: https://www.youtube.com/watch?v=zupgNbkvkMk&t=27s
+
 Devpost: https://devpost.com/software/suisense-i2cnrd
 
 ## Overview of our Project
