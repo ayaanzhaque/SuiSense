@@ -1,5 +1,27 @@
 from flask import Flask, redirect, render_template, request, url_for
-from random import randint
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer, TfidfVectorizer
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, roc_auc_score
+
+from nltk.tokenize import RegexpTokenizer
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
+import re
+
+import pickle
+import joblib
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -10,26 +32,9 @@ def upload():
 
 @app.route("/success",methods=["POST"])
 def success():
-    global st
-    realSuicidal = "According to our algorithm, the text has been classified as suicidal."
-    realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
-    prediction = randint(0, 1)
-    st=request.form['contents']
-    if st == "Hello. Depression has always been a secondary problem for me, with my main antagonist being severe Harm OCD. But since my relationship ended 8 months ago, I've been stuck in this horrific cycle of absolutely loathing myself, feeling heavy/tired and totally unmotivated to do anything. It's like I'm living in a 2 dimensional world. Nothing in life jumps out and catches my attention like it used to. I used to be quite creative but it's just taken a nose dive. Any work I do is utterly awful and I'm amazed I'm not been kicked off projects (I work freelance). I wake up and I just want to be dead, quite honestly. In fact in the last few weeks I've even found getting out of bed to be a monumental struggle in itself, where I'm almost in tears from the weight of everything.":
-        return render_template("success.html",contents=realDepression)
-    elif st == "":
-        return render_template("success.html",contents=realSuicidal)
-    else:
-        if prediction == 0:
-            return render_template("success.html",contents=realDepression)
-        else:
-            return render_template("success.html",contents=realSuicidal)
-
-@app.route("/")
-def success():
         f = request.files['file']
         f.save(f.filename)
-        h5file =  "/home/suiSense/mysite/model2.h5"
+        h5file =  "/home/suiSense/mysite/model.h5"
 
         model = joblib.load(h5file)
         Class = prediction(model, request.form['content'])
