@@ -46,6 +46,34 @@ def success():
         else:
             return render_template("success.html",contents=realDepression)
 
+#second model -- takes code from form, puts it through ml, and outputs prediction
+@app.route("/progressionsuccess",methods=["POST"])
+def progSuccess():
+    h5file =  "/home/suiSense/my_site/progressionModel.h5"
+
+    stageOne = "You have been classified in Stage 1: Falling short of expectations"
+    stageTwo = "You have been classified in Stage 2: Attributions to self"
+    stageThree = "You have been classified in Stage 3: High Self-Awareness and Self-Doubt."
+    stageFour = "You have been classified in Stage 4: Negative Affect"
+    stageFive = "You have been classified in Stage 5: Cognitive Deconstruction"
+    stageSix = "You have been classified in Stage 6: Disinhibition"
+
+    model = joblib.load(h5file)
+    Class = prediction(model, request.form['content'])
+
+    if (Class = 0):
+        return render_template("success.html",contents=stageOne)
+    elif (Class = 1):
+        return render_template("success.html",contents=stageTwo)
+    elif (Class = 2):
+        return render_template("success.html",contents=stageThree)
+    elif (Class = 3):
+        return render_template("success.html",contents=stageFour)
+    elif (Class = 4):
+        return render_template("success.html",contents=stageFive)
+    elif (Class = 5):
+        return render_template("success.html",contents=stageSix)
+
 def prediction(model, text):
     text_array = pd.Series(text)
     processed_text = processing_text(text_array)
