@@ -32,8 +32,6 @@ def upload():
 
 @app.route("/success",methods=["POST"])
 def success():
-        f = request.files['file']
-        f.save(f.filename)
         h5file =  "/home/suiSense/mysite/model.h5"
 
         model = joblib.load(h5file)
