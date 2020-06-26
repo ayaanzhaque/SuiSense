@@ -2,7 +2,6 @@ from flask import Flask, redirect, render_template, request, url_for
 
 import numpy as np
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
 
 from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer, TfidfVectorizer
@@ -22,27 +21,30 @@ import re
 
 import pickle
 import joblib
+import h5py
 
+
+#intro flask stuff
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
+#rendering the intro html page for first model
 @app.route("/", methods=["GET", "POST"])
 def upload():
     return render_template("userForm.html")
 
 @app.route("/success",methods=["POST"])
 def success():
-        h5file =  "/home/suiSense/mysite/model.h5"
-
+        h5file =  "/home/suiSense/my_site/finalModel.h5"
+        realSuicidal = "According to our algorithm, the text has been classified as suicidal."
+        realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
         model = joblib.load(h5file)
-        Class = prediction(model, request.form['content'])
-        diagnoses.clear()
+
+        Class = prediction(model, request.form['contents'])
         if (Class == 1):
-            predictions.append("According to our algorithm, the text has been classified as suicidal.")
-            return f.filename + "According to our algorithm, the text has been classified as suicidal."
+            return render_template("success.html",contents=realSuicidal)
         else:
-            predictions.append("According to our algorithm, the text has been classified as depression, not suicidal.")
-            return f.filename + "According to our algorithm, the text has been classified as depression, not suicidal."
+            return render_template("success.html",contents=realDepression)
 
 def prediction(model, text):
     text_array = pd.Series(text)
