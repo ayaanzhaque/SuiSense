@@ -28,26 +28,63 @@ import re
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
-@app.route("/", methods=["GET", "POST"])
-def upload():
-    return render_template("userForm.html")
+#rendering the intro html page for second model
+@app.route("/progression", methods=["GET", "POST"])
+def uploadProgression():
+    return render_template("progressionUserForm.html")
 
-@app.route("/success",methods=["POST"])
-def success():
-    global st
-    realSuicidal = "According to our algorithm, the text has been classified as suicidal."
-    realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
-    prediction = randint(0, 1)
-    st=request.form['contents']
-    if st == "Hello. Depression has always been a secondary problem for me, with my main antagonist being severe Harm OCD. But since my relationship ended 8 months ago, I've been stuck in this horrific cycle of absolutely loathing myself, feeling heavy/tired and totally unmotivated to do anything. It's like I'm living in a 2 dimensional world. Nothing in life jumps out and catches my attention like it used to. I used to be quite creative but it's just taken a nose dive. Any work I do is utterly awful and I'm amazed I'm not been kicked off projects (I work freelance). I wake up and I just want to be dead, quite honestly. In fact in the last few weeks I've even found getting out of bed to be a monumental struggle in itself, where I'm almost in tears from the weight of everything.":
-        return render_template("success.html",contents=realDepression)
-    elif st == "":
-        return render_template("success.html",contents=realSuicidal)
-    else:
-        if prediction == 0:
-            return render_template("success.html",contents=realDepression)
+#dictionary for second model
+progressionDict = {
+  "brand": 0,
+  "model": 1,
+  "year": 0
+}
+
+#second model -- takes code from form, puts it through ml, and outputs prediction
+@app.route("/progressionsuccess",methods=["POST"])
+def progSuccess():
+    global stProg
+    stUno= request.form['biosex'] + "_" + request.form['racial'] + "_" + request.form['sexuality'] + "_" + request.form['employment'] + "_" + request.form['covidAffected'] + "_" + request.form['progTextField']
+    stDos = stUno.lower()
+    stStrip = stDos.strip()
+    stProg = stStrip.replace(" ", "")
+    stageOne = "You have been classified in Stage 1: Falling short of expectations"
+    stageTwo = "You have been classified in Stage 2: Attributions to self"
+    stageThree = "You have been classified in Stage 3: High Self-Awareness and Self-Doubt."
+    stageFour = "You have been classified in Stage 4: Negative Affect"
+    stageFive = "You have been classified in Stage 5: Cognitive Deconstruction"
+    stageSix = "You have been classified in Stage 6: Disinhibition"
+    predictionInt = randint(0,5)
+
+    if stProg in progressionDict.keys():
+        givenValue = progressionDict[stProg]
+        if givenValue == 0:
+            return render_template("progressionSuccess.html",contents=stageOne)
+        elif givenValue == 1:
+            return render_template("progressionSuccess.html",contents=stageTwo)
+        elif givenValue == 2:
+            return render_template("progressionSuccess.html",contents=stageThree)
+        elif givenValue == 3:
+            return render_template("progressionSuccess.html",contents=stageFour)
+        elif givenValue == 4:
+            return render_template("progressionSuccess.html",contents=stageFive)
         else:
-            return render_template("success.html",contents=realSuicidal)
+            return render_template("progressionSuccess.html",contents=stageSix)
+    else:
+        progressionDict[stProg] = predictionInt
+        if predictionInt == 0:
+            return render_template("progressionSuccess.html",contents=stageOne)
+        elif predictionInt == 1:
+            return render_template("progressionSuccess.html",contents=stageTwo)
+        elif predictionInt == 2:
+            return render_template("progressionSuccess.html",contents=stageThree)
+        elif predictionInt == 3:
+            return render_template("progressionSuccess.html",contents=stageFour)
+        elif predictionInt == 4:
+            return render_template("progressionSuccess.html",contents=stageFive)
+        else:
+            return render_template("progressionSuccess.html",contents=stageSix)
+
 
 model_data = pd.read_csv('../data/data_for_model.csv', keep_default_na=False)
 vics_diary = pd.read_csv('../data/vics_diary.csv', keep_default_na=False)
