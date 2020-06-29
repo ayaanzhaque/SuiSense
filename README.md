@@ -2,11 +2,10 @@
 
 # [SuiSense](https://suisense.space/)
 
+**2nd place overall @ Geom Hacks**
+**Honorable Mention @ MLH Summer League SHDH 2020**
+
 Using NLP to distinguish suicidal messages and provide personalized support.
-
-### 2nd place overall @ Geom Hacks
-### Honorable Mention @ MLH Summer League SHDH 2020
-
 
 ## Overview of our Project
 
