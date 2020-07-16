@@ -1,4 +1,3 @@
-data_for_model
 title,selftext,author,num_comments,is_suicide,url,selftext_clean,title_clean,author_clean,selftext_length,title_length,megatext_clean
 "I hate it so much when you try and express your feelings to your parents, but they turn it around and compare your suffering with theirs.","I've been feeling really depressed and lonely lately from my job, I'm a full time late night janitor for a courthouse just 10 miles away from my hometown. Working there has been pretty easy, but I wound up feeling super lonely a lot considering I don't really get to talk to my friends or hang out with them much.
 
