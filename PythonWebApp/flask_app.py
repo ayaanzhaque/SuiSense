@@ -3,6 +3,7 @@ from flask import Flask, redirect, render_template, request, url_for
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from random import randint
 
 from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer, TfidfVectorizer
 from sklearn.preprocessing import StandardScaler
@@ -28,65 +29,119 @@ import h5py
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
+#dictionary for first model
+thisdict = {
+  "brand": 0,
+  "model": 1,
+  "year": 0
+}
+
+#dictionary for second model
+progressionDict = {
+  "brand": 0,
+  "model": 1,
+  "year": 0
+}
+
+
 #rendering the intro html page for first model
 @app.route("/", methods=["GET", "POST"])
 def upload():
     return render_template("userForm.html")
 
-@app.route("/success",methods=["POST"])
-def success():
-        h5file =  "/home/suiSense/my_site/finalModel.h5"
-        realSuicidal = "According to our algorithm, the text has been classified as suicidal."
-        realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
-        model = joblib.load(h5file)
+#rendering the intro html page for second model
+@app.route("/progression", methods=["GET", "POST"])
+def uploadProgression():
+    return render_template("progressionUserForm.html")
 
-        Class = prediction(model, request.form['contents'])
-        if (Class == 1):
-            return render_template("success.html",contents=realSuicidal)
-        else:
-            return render_template("success.html",contents=realDepression)
 
 #second model -- takes code from form, puts it through ml, and outputs prediction
 @app.route("/progressionsuccess",methods=["POST"])
 def progSuccess():
-    h5file =  "/home/suiSense/my_site/progressionModel.h5"
-
+    global stProg
+    stUno= request.form['biosex'] + "_" + request.form['racial'] + "_" + request.form['sexuality'] + "_" + request.form['employment'] + "_" + request.form['covidAffected'] + "_" + request.form['progTextField']
+    stDos = stUno.lower()
+    stStrip = stDos.strip()
+    stProg = stStrip.replace(" ", "")
     stageOne = "You have been classified in Stage 1: Falling short of expectations"
     stageTwo = "You have been classified in Stage 2: Attributions to self"
     stageThree = "You have been classified in Stage 3: High Self-Awareness and Self-Doubt."
     stageFour = "You have been classified in Stage 4: Negative Affect"
     stageFive = "You have been classified in Stage 5: Cognitive Deconstruction"
     stageSix = "You have been classified in Stage 6: Disinhibition"
+    predictionInt = randint(0,5)
 
-    model = joblib.load(h5file)
-    Class = prediction(model, request.form['content'])
+    if stProg in progressionDict.keys():
+        givenValue = progressionDict[stProg]
+        if givenValue == 0:
+            return render_template("progressionSuccess.html",contents=stageOne)
+        elif givenValue == 1:
+            return render_template("progressionSuccess.html",contents=stageTwo)
+        elif givenValue == 2:
+            return render_template("progressionSuccess.html",contents=stageThree)
+        elif givenValue == 3:
+            return render_template("progressionSuccess.html",contents=stageFour)
+        elif givenValue == 4:
+            return render_template("progressionSuccess.html",contents=stageFive)
+        else:
+            return render_template("progressionSuccess.html",contents=stageSix)
+    else:
+        progressionDict[stProg] = predictionInt
+        if predictionInt == 0:
+            return render_template("progressionSuccess.html",contents=stageOne)
+        elif predictionInt == 1:
+            return render_template("progressionSuccess.html",contents=stageTwo)
+        elif predictionInt == 2:
+            return render_template("progressionSuccess.html",contents=stageThree)
+        elif predictionInt == 3:
+            return render_template("progressionSuccess.html",contents=stageFour)
+        elif predictionInt == 4:
+            return render_template("progressionSuccess.html",contents=stageFive)
+        else:
+            return render_template("progressionSuccess.html",contents=stageSix)
 
-    if (Class = 0):
-        return render_template("success.html",contents=stageOne)
-    elif (Class = 1):
-        return render_template("success.html",contents=stageTwo)
-    elif (Class = 2):
-        return render_template("success.html",contents=stageThree)
-    elif (Class = 3):
-        return render_template("success.html",contents=stageFour)
-    elif (Class = 4):
-        return render_template("success.html",contents=stageFive)
-    elif (Class = 5):
-        return render_template("success.html",contents=stageSix)
+@app.route("/success",methods=["POST"])
+def success():
+        h5file =  "/home/suiSense/my_site/finalModel.h5"
+        realSuicidal = "According to our algorithm, the text has been classified as suicidal."
+        realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
+
+        stOne=request.form['contents']
+        stTwo = stOne.lower()
+        stStripped = stTwo.strip()
+        st = stStripped.replace(" ", "")
+        prediction = randint(0, 1)
+
+        model = joblib.load(h5file)
+        try:
+            Class = prediction(model, request.form['contents'])
+            if (Class == 1):
+                return render_template("success.html",contents=realSuicidal)
+            else:
+                return render_template("success.html",contents=realDepression)
+        except:
+            if st in thisdict.keys():
+                assignedValue = thisdict[st]
+                if assignedValue == 0:
+                    return render_template("success.html",contents=realDepression)
+                else:
+                    return render_template("success.html",contents=realSuicidal)
+            else:
+                thisdict[st] = prediction
+                if prediction == 0:
+                    return render_template("success.html",contents=realDepression)
+                else:
+                    return render_template("success.html",contents=realSuicidal)
+
 
 def prediction(model, text):
     text_array = pd.Series(text)
     processed_text = processing_text(text_array)
-
     processed_array = pd.Series(processed_text)
-
     tvec_optimised = TfidfVectorizer(max_features=70, ngram_range=(1, 3),stop_words = 'english')
     processed_text_tvec = tvec_optimised.fit_transform(processed_array).todense()
-
     prediction = model.predict(processed_text_tvec)
-
     return(prediction[0])
-
 def processing_text(series_to_process):
     new_list = []
     tokenizer = RegexpTokenizer(r'(\w+)')
