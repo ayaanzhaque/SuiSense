@@ -100,9 +100,10 @@ def progSuccess():
         else:
             return render_template("progressionSuccess.html",contents=stageSix)
 
+
 @app.route("/success",methods=["POST"])
 def success():
-        h5file =  "/home/suiSense/my_site/finalModel.h5"
+        h5file =  "/home/suiSense/my_site/final.h5"
         realSuicidal = "According to our algorithm, the text has been classified as suicidal."
         realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
 
@@ -114,24 +115,21 @@ def success():
 
         model = joblib.load(h5file)
         try:
-            Class = prediction(model, request.form['contents'])
+            text_array = pd.Series(request.form['contents'])
+            processed_text = processing_text(text_array)
+            processed_array = pd.Series(processed_text)
+            tvec_optimised = TfidfVectorizer(max_features=70, ngram_range=(1, 3),stop_words = 'english')
+            processed_text_tvec = tvec_optimised.fit_transform(processed_array).todense()
+            prediction = model.predict(processed_text_tvec)
+            Class = prediction[0]
+
             if (Class == 1):
                 return render_template("success.html",contents=realSuicidal)
             else:
                 return render_template("success.html",contents=realDepression)
         except:
-            if st in thisdict.keys():
-                assignedValue = thisdict[st]
-                if assignedValue == 0:
-                    return render_template("success.html",contents=realDepression)
-                else:
-                    return render_template("success.html",contents=realSuicidal)
-            else:
-                thisdict[st] = prediction
-                if prediction == 0:
-                    return render_template("success.html",contents=realDepression)
-                else:
-                    return render_template("success.html",contents=realSuicidal)
+            return render_template("success.html",contents= "For a proper result, we need a sequence of atleast 70 words. Your phrase was most likely less. Try to get more phrases put together to get an accurate result.")
+
 
 
 def prediction(model, text):
