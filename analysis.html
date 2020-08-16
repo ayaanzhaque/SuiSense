@@ -53,43 +53,24 @@
 	  </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap hero-wrap-2" style="background-image: url('images/IMG-0521.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap js-fullheight">
       <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-end justify-content-start">
-          <div class="col-md-8 ftco-animate text-center text-md-left mb-5">
-          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Diagnosis</span></p>
-            <h1 class="mb-3 bread">Diagnosis</h1>
-          </div>
-        </div>
+      <div class="container-fluid px-0">
+      	<div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
+	      	<img class="one-fifth js-fullheight align-self-end order-md-last img-fluid" src="images/diagnosispicture.jpeg" alt="">
+	        <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
+
+	        	<div class="text mt-5">
+	        		<span class="subheading">Home -> Diagnosis</span>
+	            <h1 class="mb-3"> <span>Diagnosis</span></h1>
+	            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+
+	          </div>
+	        </div>
+	    	</div>
       </div>
     </div>
 
-<!-- TESSERACT SCRIPT -->
-
-<script>
-    const givenImage = firebase.database().ref(uploadedImage);
-
-    const worker = Tesseract.createWorker({
-      logger: m => console.log(m)
-    });
-    Tesseract.setLogging(true);
-    work();
-
-    async function work() {
-      await worker.load();
-      await worker.loadLanguage('eng');
-      await worker.initialize('eng');
-
-      let result = await worker.detect(givenImage);
-      console.log(result.data);
-
-      result = await worker.recognize(givenImage);
-      console.log(result.data);
-
-      await worker.terminate();
-    }
-</script>
 
 
   <section class="ftco-section">
