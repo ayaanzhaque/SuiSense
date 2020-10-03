@@ -106,7 +106,7 @@
                   <input type="button" class="btn btn-primary px-4 py-3" id="back" onclick="back_handler()" value="Back"> </input> <input type="button" class="btn btn-primary px-4 py-3" id="next" onclick="next_handler()" value="Next"></input>
               </div>
 
-              <div id="results">
+              <div id="results" style="display: none">
                 <div id="score"></div>
                 <br>
                 <table>
@@ -211,8 +211,8 @@
 
                 function select(e) {
                   var t = document.getElementById(e)
-                  if (t.style.background != "#442b9b") {
-                    t.style.background = "#442b9b"
+                  if (t.style.background != "#6e4af8") {
+                    t.style.background = "#6e4af8"
                   }
                 }
 
@@ -232,7 +232,7 @@
 
 
                 function back_handler() {
-                  if (current > 0) {
+                  if (current >= 0) {
                     if (current == 25) {
                       show("page")
                       hide("results")
@@ -351,7 +351,104 @@
           </div>
         </div>
       </div>
+<!--function back_handler() {
+  if (current >= 0) {
+    if (current == 25) {
+      show("page")
+      hide("results")
+    }
+    current -= 1
+    draw()
+  }
+}
 
+
+function Category() {
+  var ns_id = getcategoryId()
+  if (s_id != ns_id) {
+    s_id = ns_id
+    document.getElementById("category").innerHTML = ss[s_id]
+  }
+}
+
+function Options() {
+  if (!(ans[current] === undefined)) {
+    var t = ans[current]
+    console.log(t)
+    for (i = 0; i < 5; i++) {
+      if (t == i) {
+        select(i)
+      } else {
+        unselect(i)
+      }
+    }
+
+  }
+}
+
+function Question() {
+  document.getElementById("question").innerHTML = qs[current]
+}
+
+
+function Progress() {
+  document.getElementById("progress").innerHTML = current + 1 + " / " + 25
+}
+
+
+function Back() {
+  if (current == 0) {
+    hide("back")
+  } else {
+    show("back")
+  }
+}
+
+function Next() {
+  if (ans[current] === undefined) {
+    hide("next")
+  } else {
+    show("next")
+  }
+}
+
+
+function calculate_total() {
+  var total = 0;
+  for (var i in ans) {
+    total += ans[i];
+  }
+  return total
+}
+
+
+function Score() {
+  document.getElementById("score").innerHTML = "Total : " + calculate_total();
+}
+
+
+function draw() {
+  Back()
+  Next()
+  if (current != 25) {
+    Category()
+    Question()
+    Progress()
+    Options()
+    show("page")
+    hide("results")
+
+  } else {
+    Score()
+    hide("page")
+    show("results")
+  }
+}
+
+document.getElementById("0").onclick = function () {
+  ans[current] = 0
+  next_handler()
+}-->
   </section>
 
   <footer class="ftco-footer ftco-bg-dark ftco-section">
