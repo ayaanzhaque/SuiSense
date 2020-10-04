@@ -181,32 +181,85 @@ display: center;
                          <div class="col-md-6 pr-md-5">
                            <form action="#">
                              <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Your Name">
+                               <input type="text" id="name" class="form-control" placeholder="Your Name">
                              </div>
                              <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Your Email">
+                               <input type="text" id="email"class="form-control" placeholder="Your Email">
                              </div>
                              <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Your Phone Number">
+                               <input type="text" id="phone" class="form-control" placeholder="Your Phone Number">
                              </div>
                              <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Your Office Address">
+                               <input type="text" id="address"class="form-control" placeholder="Your Office Address">
                              </div>
                              <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Your Availability Hours (Dates/Times)">
+                               <input type="text" id="availability " class="form-control" placeholder="Your Availability Hours (Dates/Times)">
                              </div>
                              <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Therapist Type">
+                               <input type="text" id="therapisttype" class="form-control" placeholder="Therapist Type">
                              </div>
                              <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Demographic Information (Age, Gender, Race, who you specialize with)">
+                               <input type="text" id="demographic"class="form-control" placeholder="Demographic Information (Age, Gender, Race, who you specialize with)">
                              </div>
                              <div class="form-group">
-                               <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Your Bio"></textarea>
+                               <textarea name="" id="bio" cols="30" rows="7" class="form-control" placeholder="Your Bio"></textarea>
                              </div>
                              <div class="form-group">
-                               <input type="button" value="Submit Form" class="btn btn-primary py-3 px-5">
+                               <button class="btn btn-primary py-3 px-5" type="button" onClick="beastfunction1()">Submit</button>
                              </div>
+                             <style>
+												.redDiv {
+													display: none;
+													border: 1px solid red;
+												}
+												</style>
+              <p id = "demo"></p>
+              <p class = "redDiv" id = "fail"></p>
+              <script>
+              function beastfunction1(){
+              var name = document.getElementById("conName").value;
+              var email = document.getElementById("conEmail").value;
+              var edesc = document.getElementById("conExistingDesc").value;
+              var ndesc = document.getElementById("conEdit").value;
+              var cost = document.getElementById("conCost").value;
+              var goal = document.getElementById("conGoal").value;
+
+              if (name == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (email == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (edesc == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (ndesc == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            } else if (cost == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            }else if (goal == "") {
+              document.getElementById("demo").innerHTML = "";
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            }else {
+              document.getElementById("demo").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
+              document.getElementById("fail").innerHTML = "";
+              document.getElementById("fail").style.border = "1px solid white";
+              document.getElementById("GOAT").reset()
+
+            }
+
+            }
+
+              </script>
+
                            </form>
 
 
