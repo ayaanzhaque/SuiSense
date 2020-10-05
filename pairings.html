@@ -168,7 +168,7 @@ display: center;
          <p class="null"></p>
                <div id="London" class="tabcontent">
                  <center>
-                 <form id="markerForm" method="post" role="form" class="contactForm">
+                 <form id = "GOAT" role="form" class="contactForm">
                    <label>Please upload a profile image of yourself here: </label><br>
                        <label for="file-upload" class="custom-file-upload">
                            Custom Upload
@@ -178,111 +178,109 @@ display: center;
                        <br>
                        <input id="file-upload" type="file"/>
 
-                         <div class="col-md-6 pr-md-5">
-                           <form action="#">
-                             <div class="form-group">
-                               <input type="text" id="name" class="form-control" placeholder="Your Name">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" id="email"class="form-control" placeholder="Your Email">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" id="phone" class="form-control" placeholder="Your Phone Number">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" id="address"class="form-control" placeholder="Your Office Address">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" id="availability " class="form-control" placeholder="Your Availability Hours (Dates/Times)">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" id="therapisttype" class="form-control" placeholder="Therapist Type">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" id="demographic"class="form-control" placeholder="Demographic Information (Age, Gender, Race, who you specialize with)">
-                             </div>
-                             <div class="form-group">
-                               <textarea name="" id="bio" cols="30" rows="7" class="form-control" placeholder="Your Bio"></textarea>
-                             </div>
-                             <div class="form-group">
-                               <button class="btn btn-primary py-3 px-5" type="button" onClick="beastfunction1()">Submit</button>
-                             </div>
-                             <style>
-												.redDiv {
-													display: none;
-													border: 1px solid red;
-												}
-												</style>
-              <p id = "demo"></p>
-              <p class = "redDiv" id = "fail"></p>
-              <script>
-              function beastfunction1(){
-              var name = document.getElementById("conName").value;
-              var email = document.getElementById("conEmail").value;
-              var edesc = document.getElementById("conExistingDesc").value;
-              var ndesc = document.getElementById("conEdit").value;
-              var cost = document.getElementById("conCost").value;
-              var goal = document.getElementById("conGoal").value;
-
-              if (name == "") {
-              document.getElementById("demo").innerHTML = "";
-              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail").style.display = "block";
-            } else if (email == "") {
-              document.getElementById("demo").innerHTML = "";
-              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail").style.display = "block";
-            } else if (edesc == "") {
-              document.getElementById("demo").innerHTML = "";
-              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail").style.display = "block";
-            } else if (ndesc == "") {
-              document.getElementById("demo").innerHTML = "";
-              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail").style.display = "block";
-            } else if (cost == "") {
-              document.getElementById("demo").innerHTML = "";
-              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail").style.display = "block";
-            }else if (goal == "") {
-              document.getElementById("demo").innerHTML = "";
-              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail").style.display = "block";
-            }else {
-              document.getElementById("demo").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
-              document.getElementById("fail").innerHTML = "";
-              document.getElementById("fail").style.border = "1px solid white";
-              document.getElementById("GOAT").reset()
-
-            }
-
-            }
-
-              </script>
-
-                           </form>
 
 
-                       </div>
+
+      <div class="row justify-content-center mb-5 element-animate">
+        <div class="col-md-8 text-center">
+          <form  action="#">
+            <div class="form-group">
+                    <textarea name="" id="conName" cols="30" rows="1" class="form-control" placeholder="Your Name"></textarea>
+                  </div>
+            <div class="form-group">
+                    <textarea name="" id="conEmail" cols="30" rows="1" class="form-control" placeholder="Your Email"></textarea>
+                  </div>
+           <div class="form-group">
+                    <textarea name="" id="conExistingDesc" cols="30" rows="1" class="form-control" placeholder="Your Phone Number"></textarea>
+                  </div>
+            <div class="form-group">
+              <textarea name="" id="conEdit" cols="30" rows="1" class="form-control" placeholder="Your Office Address"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="conCost" cols="30" rows="1" class="form-control" placeholder="Your Availability Hours (Dates and Times)"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="conGoal" cols="30" rows="1" class="form-control" placeholder="Therapist Type"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="demographic" cols="30" rows="1" class="form-control" placeholder="Demographic Information(Age, Gender, Race, who you specialize with)"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea name="" id="bio" cols="30" rows="7" class="form-control" placeholder="Your Bio"></textarea>
+            </div>
+
+            <div class="row justify-content-center mb-5 element-animate">
+              <div class="col-md-8 text-center">
+                <button class="btn btn-primary py-3 px-5" type="button" onClick="beastfunction1()">Submit</button>
+              </div>
+            </div>
+            <style>
+                      .redDiv {
+                        display: none;
+                        border: 1px solid red;
+                      }
+                      </style>
+            <p id = "demo"></p>
+            <p class = "redDiv" id = "fail"></p>
+            <script>
+            function beastfunction1(){
+            var name = document.getElementById("conName").value;
+            var email = document.getElementById("conEmail").value;
+            var edesc = document.getElementById("conExistingDesc").value;
+            var ndesc = document.getElementById("conEdit").value;
+            var cost = document.getElementById("conCost").value;
+            var goal = document.getElementById("conGoal").value;
+            var demographic = document.getElementById("demographic").value;
+            var bio = document.getElementById("bio").value;
 
 
-                     <script>
-                       function testSubmitFunction() {
-                         document.getElementById("hometown").style.display = "block";
-                       }
-                     </script>
+            if (name == "") {
+            document.getElementById("demo").innerHTML = "";
+            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+            document.getElementById("fail").style.display = "block";
+          } else if (email == "") {
+            document.getElementById("demo").innerHTML = "";
+            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+            document.getElementById("fail").style.display = "block";
+          } else if (edesc == "") {
+            document.getElementById("demo").innerHTML = "";
+            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+            document.getElementById("fail").style.display = "block";
+          } else if (ndesc == "") {
+            document.getElementById("demo").innerHTML = "";
+            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+            document.getElementById("fail").style.display = "block";
+          } else if (cost == "") {
+            document.getElementById("demo").innerHTML = "";
+            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+            document.getElementById("fail").style.display = "block";
+          }else if (goal == "") {
+            document.getElementById("demo").innerHTML = "";
+            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+            document.getElementById("fail").style.display = "block";
+          }else if (demographic == "") {
+            document.getElementById("demo").innerHTML = "";
+            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+            document.getElementById("fail").style.display = "block";
+          }else if (bio == "") {
+            document.getElementById("demo").innerHTML = "";
+            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+            document.getElementById("fail").style.display = "block";
+          }
+          else {
+            document.getElementById("demo").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
+            document.getElementById("fail").innerHTML = "";
+            document.getElementById("fail").style.border = "1px solid white";
+            document.getElementById("GOAT").reset()
 
+          }
 
-                   </div>
-                 </form>
+          }
 
-       <p></p>
-
-                 <div id="hometown" style="display: none">
-                     <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
-                 </div>
-               </center>
-               </div>
+            </script>
+</div>
+          </form>
+        </div>
 
        <p></p>
                  <p class="null"></p>
@@ -290,73 +288,110 @@ display: center;
 
                <div id="Paris" class="tabcontent">
                  <center>
-                 <form id="markerForm" method="post" role="form" class="contactForm">
-                   <label>Please upload a profile image of yourself here: </label> <br>
-                       <label for="file-upload" class="custom-file-upload">
-                           Custom Upload
-                       </label>
+                   <form id = "GOAT1" role="form" class="contactForm">
+                     <label>Please upload a profile image of yourself here: </label><br>
+                         <label for="file-upload" class="custom-file-upload">
+                             Custom Upload
+                         </label>
 
-                       <br>
-                       <br>
-                       <input id="file-upload" type="file"/>
-
-                         <div class="col-md-6 pr-md-5">
-                           <form action="#">
-                             <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Your Name">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Your Email">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Your Phone Number">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Your Availability Hours (Dates/Times)">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Address">
-                             </div>
-                             <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Demographic Information (Age, Gender, Race, what kind of therapist would you like)">
-                             </div>
-                             <div class="form-group">
-                               <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Summary of your situation"></textarea>
-                             </div>
-                             <div class="form-group">
-                               <input type="button" value="Submit Form" class="btn btn-primary py-3 px-5">
-                             </div>
-                           </form>
+                         <br>
+                         <br>
+                         <input id="file-upload" type="file"/>
 
 
-                       </div>
 
 
-                     <script>
-                       function testSubmitFunction() {
-                         document.getElementById("hometown").style.display = "block";
-                       }
-                     </script>
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-8 text-center">
+            <form  action="#">
+              <div class="form-group">
+                      <textarea name="" id="conName1" cols="30" rows="1" class="form-control" placeholder="Your Name"></textarea>
+                    </div>
+              <div class="form-group">
+                      <textarea name="" id="conEmail1" cols="30" rows="1" class="form-control" placeholder="Your Email"></textarea>
+                    </div>
+             <div class="form-group">
+                      <textarea name="" id="conExistingDesc1" cols="30" rows="1" class="form-control" placeholder="Your Phone Number"></textarea>
+                    </div>
+              <div class="form-group">
+                <textarea name="" id="conEdit1" cols="30" rows="1" class="form-control" placeholder="Your Availability Hours (Dates and Times)"></textarea>
+              </div>
+              <div class="form-group">
+                <textarea name="" id="conCost1" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
+              </div>
+              <div class="form-group">
+                <textarea name="" id="conGoal1" cols="30" rows="1" class="form-control" placeholder="Demographic Information(Age, Gender, Race, who you specialize with)"></textarea>
+              </div>
+              <div class="form-group">
+                <textarea name="" id="bio1" cols="30" rows="7" class="form-control" placeholder="Summary Of your Situation"></textarea>
+              </div>
+
+              <div class="row justify-content-center mb-5 element-animate">
+                <div class="col-md-8 text-center">
+                  <button class="btn btn-primary py-3 px-5" type="button" onClick="beastfunction2()">Submit</button>
+                </div>
+              </div>
+              <style>
+                        .redDiv {
+                          display: none;
+                          border: 1px solid red;
+                        }
+                        </style>
+              <p id = "demo1"></p>
+              <p class = "redDiv" id = "fail1"></p>
+              <script>
+              function beastfunction2(){
+              var name = document.getElementById("conName1").value;
+              var email = document.getElementById("conEmail1").value;
+              var edesc = document.getElementById("conExistingDesc1").value;
+              var ndesc = document.getElementById("conEdit1").value;
+              var cost = document.getElementById("conCost1").value;
+              var goal = document.getElementById("conGoal1").value;
+              var bio = document.getElementById("bio1").value;
 
 
-                   </div>
-                 </form>
+              if (name == "") {
+              document.getElementById("demo1").innerHTML = "";
+              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail1").style.display = "block";
+            } else if (email == "") {
+              document.getElementById("demo1").innerHTML = "";
+              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail1").style.display = "block";
+            } else if (edesc == "") {
+              document.getElementById("demo1").innerHTML = "";
+              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail1").style.display = "block";
+            } else if (ndesc == "") {
+              document.getElementById("demo1").innerHTML = "";
+              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail1").style.display = "block";
+            } else if (cost == "") {
+              document.getElementById("demo1").innerHTML = "";
+              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail1").style.display = "block";
+            }else if (goal == "") {
+              document.getElementById("demo1").innerHTML = "";
+              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail1").style.display = "block";
+            }else if (bio == "") {
+              document.getElementById("demo1").innerHTML = "";
+              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail1").style.display = "block";
+            }
+            else {
+              document.getElementById("demo1").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
+              document.getElementById("fail1").innerHTML = "";
+              document.getElementById("fail1").style.border = "1px solid white";
+              document.getElementById("GOAT1").reset()
 
-       <p></p>
+            }
 
-                 <div id="hometown" style="display: none">
-                     <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
-                 </div>
-               </center>
-                         </div>
+            }
 
-       <script>
-         function testSubmitFunctionTwo() {
-           document.getElementById("hometownTwo").style.display = "block";
-         }
-       </script>
-                   </div>
-                 </form>
+              </script>
+  </div>
+            </form>
          <p class="null"></p>
        <div id="hometownTwo" style="display: none">
            <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
