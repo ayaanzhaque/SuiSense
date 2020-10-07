@@ -242,62 +242,6 @@ display: center;
                       </style>
             <p id = "demo"></p>
             <p class = "redDiv" id = "fail"></p>
-            <script>
-            function beastfunction1(){
-            var name = document.getElementById("conName").value;
-            var email = document.getElementById("conEmail").value;
-            var edesc = document.getElementById("conExistingDesc").value;
-            var ndesc = document.getElementById("conEdit").value;
-            var cost = document.getElementById("conCost").value;
-            var goal = document.getElementById("conGoal").value;
-            var demographic = document.getElementById("demographic").value;
-            var bio = document.getElementById("bio").value;
-
-
-            if (name == "") {
-            document.getElementById("demo").innerHTML = "";
-            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-            document.getElementById("fail").style.display = "block";
-          } else if (email == "") {
-            document.getElementById("demo").innerHTML = "";
-            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-            document.getElementById("fail").style.display = "block";
-          } else if (edesc == "") {
-            document.getElementById("demo").innerHTML = "";
-            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-            document.getElementById("fail").style.display = "block";
-          } else if (ndesc == "") {
-            document.getElementById("demo").innerHTML = "";
-            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-            document.getElementById("fail").style.display = "block";
-          } else if (cost == "") {
-            document.getElementById("demo").innerHTML = "";
-            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-            document.getElementById("fail").style.display = "block";
-          }else if (goal == "") {
-            document.getElementById("demo").innerHTML = "";
-            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-            document.getElementById("fail").style.display = "block";
-          }else if (demographic == "") {
-            document.getElementById("demo").innerHTML = "";
-            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-            document.getElementById("fail").style.display = "block";
-          }else if (bio == "") {
-            document.getElementById("demo").innerHTML = "";
-            document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
-            document.getElementById("fail").style.display = "block";
-          }
-          else {
-            document.getElementById("demo").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
-            document.getElementById("fail").innerHTML = "";
-            document.getElementById("fail").style.border = "1px solid white";
-            document.getElementById("GOAT").reset()
-
-          }
-
-          }
-
-            </script>
 </div>
           </form>
         </div>
@@ -359,114 +303,22 @@ display: center;
                         </style>
               <p id = "demo1"></p>
               <p class = "redDiv1" id = "fail1"></p>
-              <script>
-              function beastfunction2(){
-              var name = document.getElementById("conName1").value;
-              var email = document.getElementById("conEmail1").value;
-              var edesc = document.getElementById("conExistingDesc1").value;
-              var ndesc = document.getElementById("conEdit1").value;
-              var cost = document.getElementById("conCost1").value;
-              var goal = document.getElementById("conGoal1").value;
-              var bio = document.getElementById("bio1").value;
-
-
-              if (name == "") {
-              document.getElementById("demo1").innerHTML = "";
-              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail1").style.display = "block";
-            } else if (email == "") {
-              document.getElementById("demo1").innerHTML = "";
-              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail1").style.display = "block";
-            } else if (edesc == "") {
-              document.getElementById("demo1").innerHTML = "";
-              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail1").style.display = "block";
-            } else if (ndesc == "") {
-              document.getElementById("demo1").innerHTML = "";
-              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail1").style.display = "block";
-            } else if (cost == "") {
-              document.getElementById("demo1").innerHTML = "";
-              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail1").style.display = "block";
-            }else if (goal == "") {
-              document.getElementById("demo1").innerHTML = "";
-              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail1").style.display = "block";
-            }else if (bio == "") {
-              document.getElementById("demo1").innerHTML = "";
-              document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
-              document.getElementById("fail1").style.display = "block";
-            }
-            else {
-              document.getElementById("demo1").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
-              document.getElementById("fail1").innerHTML = "";
-              document.getElementById("fail1").style.border = "1px solid white";
-              document.getElementById("GOAT1").reset()
-
-            }
-
-            }
-
-              </script>
-  </div>
+              </div>
             </form>
+
+
          <p class="null"></p>
        <div id="hometownTwo" style="display: none">
            <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
        </div>
                  </center>
                </div>
-
-         <script>
-         function openCity(evt, cityName) {
-           var i, tabcontent, tablinks;
-           tabcontent = document.getElementsByClassName("tabcontent");
-           for (i = 0; i < tabcontent.length; i++) {
-             tabcontent[i].style.display = "none";
-           }
-           tablinks = document.getElementsByClassName("tablinks");
-           for (i = 0; i < tablinks.length; i++) {
-             tablinks[i].className = tablinks[i].className.replace(" active", "");
-           }
-           document.getElementById(cityName).style.display = "block";
-           evt.currentTarget.className += " active";
-         }
-
-         document.getElementById("defaultOpen").click();
-         </script>
-
          </body>
        </div>
      </section>
 
-
-<section class="ftco-section bg-white">
-
-      <style>
-      input[type="file"] {
-        display: none;
-    }
-    .custom-file-upload {
-        cursor: pointer;
-
-        background: #6a28ff;
-        border: 1px solid #6a28ff;
-        padding: 10px 24px;
-        color: #ffffff;
-        border-radius: 25px;
-    }
-
-    .custom-file-upload:hover {
-      color: #6a28ff;
-      background: #ffffff;
-    }
-    </style>
-
-
-
-
+</div>
+</div>
 </section>
 
 <section class="ftco-section bg-light">
@@ -474,6 +326,7 @@ display: center;
     <div class="row justify-content-center mb-5 pb-3">
       <div class="col-md-7 text-center heading-section ftco-animate">
         <h2 class="mb-4">Your Map</h2>
+        <p>i like ya cut g</p>
       </div>
       <iframe
   width="120%"
@@ -484,87 +337,6 @@ display: center;
     </div>
   </div>
 </section>
-
-
-    <!-- ORIGINAL CODE FROM TEMPLATE MAY BE USEFUL LATER
-    		<div class="row d-flex">
-	        <div class="col-lg-3 col-md-6 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-		            <h2 class="heading">Free</h2>
-		            <span class="price"><sup>$</sup> <span class="number">0<small class="per">/mo</small></span>
-		            <span class="excerpt d-block">100% free. Forever</span>
-		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
-
-		            <ul class="pricing-text mb-4">
-		              <li><strong>150 GB</strong> Bandwidth</li>
-		              <li><strong>100 GB</strong> Storage</li>
-		              <li><strong>$1.00 / GB</strong> Overages</li>
-		              <li>All features</li>
-		            </ul>
-		            <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-lg-3 col-md-6 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-		            <h2 class="heading">Startup</h2>
-		            <span class="price"><sup>$</sup> <span class="number">19<small class="per">/mo</small></span></span>
-		            <span class="excerpt d-block">All features are included</span>
-		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
-
-		            <ul class="pricing-text mb-4">
-		              <li><strong>450 GB</strong> Bandwidth</li>
-		              <li><strong>400 GB</strong> Storage</li>
-		              <li><strong>$2.00 / GB</strong> Overages</li>
-		              <li>All features</li>
-		            </ul>
-		            <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-lg-3 col-md-6 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-		            <h2 class="heading">Premium</h2>
-		            <span class="price"><sup>$</sup> <span class="number">49<small class="per">/mo</small></span></span>
-		            <span class="excerpt d-block">All features are included</span>
-		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
-
-		            <ul class="pricing-text mb-4">
-		              <li><strong>250 GB</strong> Bandwidth</li>
-		              <li><strong>200 GB</strong> Storage</li>
-		              <li><strong>$5.00 / GB</strong> Overages</li>
-		              <li>All features</li>
-		            </ul>
-		            <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-lg-3 col-md-6 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-		            <h2 class="heading">Pro</h2>
-		            <span class="price"><sup>$</sup> <span class="number">99<small class="per">/mo</small></span></span>
-		            <span class="excerpt d-block">All features are included</span>
-		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
-
-		            <ul class="pricing-text mb-4">
-		              <li><strong>450 GB</strong> Bandwidth</li>
-		              <li><strong>400 GB</strong> Storage</li>
-		              <li><strong>$20.00 / GB</strong> Overages</li>
-		              <li>All features</li>
-		            </ul>
-			          <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
-	            </div>
-	          </div>
-	        </div>
-
--->
-	      </div>
-    	</div>
-    </section>
 
 
 
@@ -589,7 +361,7 @@ display: center;
                   <p class="card-text"><b>Email:</b> martinwilliams@gmail.com</p>
                   <p class="card-text"><b>Home Address:</b> 750 W 10th St, Gilroy, CA</p>
                   <p class="card-text"><b>Therapist Type:</b> Psychotherapist</p>
-                  <p class="card-text"><b>Availability:</b> 6/25/2020-7/10/2020, 9:00am - 5:30pm</p>
+                  <p class="card-text"><b>Availability:</b> 10/10/2020-10/24/2020, 9:00am - 5:30pm</p>
                   <p class="card-text"><b>Bio:</b> I do evaluations of emotional damage deriving from personal injury, sexual or racial harassment and sexual abuse (including in psychotherapy) using objective psychological assessment devices</p>
                 </div>
               </div>
@@ -607,7 +379,7 @@ display: center;
                             <p class="card-text"><b>Email:</b> shereenmohsen@gmail.com</p>
                             <p class="card-text"><b>Office Address:</b> 1101 S Winchester Blvd, Suite J-205, San Jose, California, 95128</p>
                             <p class="card-text"><b>Therapist Type:</b> Licensed Clinical Psychologist</p>
-                            <p class="card-text"><b>Availability:</b> 6/30/2020-7/7/2020, 9:00am - 5:30pm</p>
+                            <p class="card-text"><b>Availability:</b> 10/6/2020-10/20/2020, 9:00am - 5:30pm</p>
                             <p class="card-text"><b>Bio:</b> I work on Individual Counseling, Marriage and Family, Consultation, Health and Wellness, Crisis Intervention / Trauma, and Education / Schooling.</p>
 
 
@@ -675,6 +447,44 @@ display: center;
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+  <style>
+  input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    cursor: pointer;
+
+    background: #6a28ff;
+    border: 1px solid #6a28ff;
+    padding: 10px 24px;
+    color: #ffffff;
+    border-radius: 25px;
+}
+
+.custom-file-upload:hover {
+  color: #6a28ff;
+  background: #ffffff;
+}
+</style>
+
+
+  <script>
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  document.getElementById("defaultOpen").click();
+  </script>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -717,6 +527,58 @@ display: center;
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+</script>
+
+<script>
+function beastfunction2(){
+var name = document.getElementById("conName1").value;
+var email = document.getElementById("conEmail1").value;
+var edesc = document.getElementById("conExistingDesc1").value;
+var ndesc = document.getElementById("conEdit1").value;
+var cost = document.getElementById("conCost1").value;
+var goal = document.getElementById("conGoal1").value;
+var bio = document.getElementById("bio1").value;
+
+
+if (name == "") {
+document.getElementById("demo1").innerHTML = "";
+document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+document.getElementById("fail1").style.display = "block";
+} else if (email == "") {
+document.getElementById("demo1").innerHTML = "";
+document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+document.getElementById("fail1").style.display = "block";
+} else if (edesc == "") {
+document.getElementById("demo1").innerHTML = "";
+document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+document.getElementById("fail1").style.display = "block";
+} else if (ndesc == "") {
+document.getElementById("demo1").innerHTML = "";
+document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+document.getElementById("fail1").style.display = "block";
+} else if (cost == "") {
+document.getElementById("demo1").innerHTML = "";
+document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+document.getElementById("fail1").style.display = "block";
+}else if (goal == "") {
+document.getElementById("demo1").innerHTML = "";
+document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+document.getElementById("fail1").style.display = "block";
+}else if (bio == "") {
+document.getElementById("demo1").innerHTML = "";
+document.getElementById("fail1").innerHTML = "Please fill out all questions to submit your report.";
+document.getElementById("fail1").style.display = "block";
+}
+else {
+document.getElementById("demo1").innerHTML = "</br>Thank you for submitting your report! You will receive an email when our system has found a match.";
+document.getElementById("fail1").innerHTML = "";
+document.getElementById("fail1").style.border = "1px solid white";
+document.getElementById("GOAT1").reset()
+
+}
+
+}
+
 </script>
 
 
