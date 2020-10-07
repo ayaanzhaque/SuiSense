@@ -9063,6 +9063,28 @@ textarea.form-control {
   .media .ftco-icon span {
     color: #6927ff; }
 
+    .ftco-social-icons {
+      margin: 0;
+      padding: 0; }
+      .ftco-social-icons li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: -moz-inline-stack;
+        display: inline-block;
+        zoom: 1;
+        *display: inline; }
+        .ftco-social-icons li a {
+          display: -moz-inline-stack;
+          display: inline-block;
+          zoom: 1;
+          *display: inline;
+          color: #2f89fc;
+          padding-left: 10px;
+          padding-right: 10px; }
+          .ftco-social-icons li a i {
+            font-size: 20px; }
+
 .ftco-media {
   background: #fff;
   border-radius: 0px; }
