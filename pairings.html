@@ -33,37 +33,26 @@
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="index.html"><img src="images/hand-logo.png" height='30px'> SuiSense</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="analysis.html" class="nav-link">Initial Analysis</a></li>
             <li class="nav-item"><a class="nav-link" href="analysis2.html">Advanced Analysis</a></li>
-	          <li class="nav-item active"><a class="nav-link" href="pairings.html">Support</a></li>
+	          <li class="nav-item"><a class="nav-link" href="pairings.html">Support</a></li>
 	          <!-- <li class="nav-item"><a href="blog.html" class="nav-link">Forum</a></li> -->
+	          <!-- <li class="nav-item cta"><a href="analysis.html" class="nav-link"><span>Get started</span></a></li> -->
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
 
-    <div class="jumbotron jumbotron-fluid">
-      <div class="hero-wrap js-fullheight">
-        <div class="overlay"></div>
-        <div class="container-fluid px-0">
-          <div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
-            <img class="one-fifth js-fullheight align-self-end order-md-last img-fluid" src="images/diagnosispic.png" alt="">
-            <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
 
-              <div class="text mt-5">
-                <span class="subheading">Home -> Support</span>
-                <h1 class="mb-3"> <span>Support</span></h1>
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 <style>
 .jumbotron {
@@ -83,9 +72,24 @@ left: 33%;
 }
 </style>
 
+<div class="jumbotron jumbotron-fluid">
+  <div class="hero-wrap js-fullheight">
+    <div class="overlay"></div>
+    <div class="container-fluid px-0">
+      <div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
+        <img class="one-fifth js-fullheight align-self-end order-md-last img-fluid" src="images/diagnosispic.png" alt="">
+        <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
 
+          <div class="text mt-5">
+              <span class="subheading">Home -> Support</span>
+              <h1 class="mb-3"> <span style='color: white !important;'>Support</span></h1>
 
- <!-- copied code from python anywhere form -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
  <style>
  /* tab css */
@@ -140,15 +144,17 @@ display: center;
 .tabcontent {
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+
   border-top: none;
 }
 </style>
+
+
 <section class="ftco-section bg-white">
   <div class="container">
+
     <div class="row justify-content-center mb-5">
       <div class="col-md-7 text-center heading-section ftco-animate">
-
       <p></p>
       <p></p>
       <p></p>
@@ -156,169 +162,165 @@ display: center;
       <p>Enter your personal information to be paired with someone who requires your services.   </p>
     </div>
   </div>
-</div>
+
+  <div id='report' class="Reports section-bg">
+
+    <div class="contact-form">
+      <div id="errormessage"></div>
+      <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      </head>
+      <body>
+    <center>
+    <span id="tabBackground"></span>
+    <div id="colorstrip"/>
+
+      <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Therapist</button>
+        <button class="tablinks" onclick="openCity(event, 'Paris')">Patient</button>
+      </div>
+    </center>
+
+    <p></p>
+
+    <center>
+
+      <p class="null"></p>
+            <div id="London" class="tabcontent">
+              <center>
+              <form id = "GOAT" role="form" class="contactForm">
+                <label>Please upload a profile image of yourself here: </label><br>
+                    <label for="file-upload" class="custom-file-upload">
+                        Custom Upload
+                    </label>
+
+                    <br>
+                    <br>
+                    <input id="file-upload" type="file"/>
 
 
 
- <section id="Report" class="Reports section-bg">
-       <div class="container">
-         <div class="row">
+
+    <div class="row justify-content-center mb-5 element-animate">
+     <div class="col-md-8 text-center">
+       <form  action="#">
+         <div class="form-group">
+                 <textarea name="" id="conName" cols="30" rows="1" class="form-control" placeholder="Your Name"></textarea>
+               </div>
+         <div class="form-group">
+                 <textarea name="" id="conEmail" cols="30" rows="1" class="form-control" placeholder="Your Email"></textarea>
+               </div>
+        <div class="form-group">
+                 <textarea name="" id="conExistingDesc" cols="30" rows="1" class="form-control" placeholder="Your Phone Number"></textarea>
+               </div>
+         <div class="form-group">
+           <textarea name="" id="conEdit" cols="30" rows="1" class="form-control" placeholder="Your Office Address"></textarea>
          </div>
-       </div>
-       <div class="contact-form">
-         <div id="errormessage"></div>
-         <head>
-         <meta name="viewport" content="width=device-width, initial-scale=1">
-         </head>
-         <body>
- <center>
-   <span id="tabBackground"></span>
-   <div id="colorstrip"/>
-
-         <div class="tab">
-           <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Therapist</button>
-           <button class="tablinks" onclick="openCity(event, 'Paris')">Patient</button>
+         <div class="form-group">
+           <textarea name="" id="conCost" cols="30" rows="1" class="form-control" placeholder="Your Availability Hours (Dates and Times)"></textarea>
          </div>
-       </center>
+         <div class="form-group">
+           <textarea name="" id="conGoal" cols="30" rows="1" class="form-control" placeholder="Therapist Type"></textarea>
+         </div>
+         <div class="form-group">
+           <textarea name="" id="demographic" cols="30" rows="1" class="form-control" placeholder="Demographic Information (Age, Gender, Race, who you specialize with)"></textarea>
+         </div>
+         <div class="form-group">
+           <textarea name="" id="bio" cols="30" rows="7" class="form-control" placeholder="Your Bio"></textarea>
+         </div>
 
- <p></p>
+         <div class="row justify-content-center mb-5 element-animate">
+           <div class="col-md-8 text-center">
+             <button class="btn btn-primary py-3 px-5" type="button" onClick="beastfunction1()">Submit</button>
+           </div>
+         </div>
+         <style>
+                   .redDiv {
+                     display: none;
+                     border: 1px solid red;
+                   }
+                   </style>
+         <p id = "demo"></p>
+         <p class = "redDiv" id = "fail"></p>
+    </div>
+       </form>
+     </div>
 
-   <center>
+    <p></p>
+              <p class="null"></p>
+            </div>
 
-         <p class="null"></p>
-               <div id="London" class="tabcontent">
-                 <center>
-                 <form id = "GOAT" role="form" class="contactForm">
-                   <label>Please upload a profile image of yourself here: </label><br>
-                       <label for="file-upload" class="custom-file-upload">
-                           Custom Upload
-                       </label>
+            <div id="Paris" class="tabcontent">
+              <center>
+                <form id = "GOAT1" role="form" class="contactForm">
+                  <label>Please upload a profile image of yourself here: </label><br>
+                      <label for="file-upload" class="custom-file-upload">
+                          Custom Upload
+                      </label>
 
-                       <br>
-                       <br>
-                       <input id="file-upload" type="file"/>
-
+                      <br>
+                      <br>
+                      <input id="file-upload" type="file"/>
 
 
 
-      <div class="row justify-content-center mb-5 element-animate">
-        <div class="col-md-8 text-center">
-          <form  action="#">
-            <div class="form-group">
-                    <textarea name="" id="conName" cols="30" rows="1" class="form-control" placeholder="Your Name"></textarea>
-                  </div>
-            <div class="form-group">
-                    <textarea name="" id="conEmail" cols="30" rows="1" class="form-control" placeholder="Your Email"></textarea>
-                  </div>
+
+     <div class="row justify-content-center mb-5 element-animate">
+       <div class="col-md-8 text-center">
+         <form  action="#">
            <div class="form-group">
-                    <textarea name="" id="conExistingDesc" cols="30" rows="1" class="form-control" placeholder="Your Phone Number"></textarea>
-                  </div>
-            <div class="form-group">
-              <textarea name="" id="conEdit" cols="30" rows="1" class="form-control" placeholder="Your Office Address"></textarea>
-            </div>
-            <div class="form-group">
-              <textarea name="" id="conCost" cols="30" rows="1" class="form-control" placeholder="Your Availability Hours (Dates and Times)"></textarea>
-            </div>
-            <div class="form-group">
-              <textarea name="" id="conGoal" cols="30" rows="1" class="form-control" placeholder="Therapist Type"></textarea>
-            </div>
-            <div class="form-group">
-              <textarea name="" id="demographic" cols="30" rows="1" class="form-control" placeholder="Demographic Information(Age, Gender, Race, who you specialize with)"></textarea>
-            </div>
-            <div class="form-group">
-              <textarea name="" id="bio" cols="30" rows="7" class="form-control" placeholder="Your Bio"></textarea>
-            </div>
+                   <textarea name="" id="conName1" cols="30" rows="1" class="form-control" placeholder="Your Name"></textarea>
+                 </div>
+           <div class="form-group">
+                   <textarea name="" id="conEmail1" cols="30" rows="1" class="form-control" placeholder="Your Email"></textarea>
+                 </div>
+          <div class="form-group">
+                   <textarea name="" id="conExistingDesc1" cols="30" rows="1" class="form-control" placeholder="Your Phone Number"></textarea>
+                 </div>
+           <div class="form-group">
+             <textarea name="" id="conEdit1" cols="30" rows="1" class="form-control" placeholder="Your Availability Hours (Dates and Times)"></textarea>
+           </div>
+           <div class="form-group">
+             <textarea name="" id="conCost1" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
+           </div>
+           <div class="form-group">
+             <textarea name="" id="conGoal1" cols="30" rows="1" class="form-control" placeholder="Demographic Information(Age, Gender, Race, who you specialize with)"></textarea>
+           </div>
+           <div class="form-group">
+             <textarea name="" id="bio1" cols="30" rows="7" class="form-control" placeholder="Summary Of your Situation"></textarea>
+           </div>
 
-            <div class="row justify-content-center mb-5 element-animate">
-              <div class="col-md-8 text-center">
-                <button class="btn btn-primary py-3 px-5" type="button" onClick="beastfunction1()">Submit</button>
-              </div>
+           <div class="row justify-content-center mb-5 element-animate">
+             <div class="col-md-8 text-center">
+               <button class="btn btn-primary py-3 px-5" type="button" onClick="beastfunction2()">Submit</button>
+             </div>
+           </div>
+           <style>
+                     .redDiv1 {
+                       display: none;
+                       border: 1px solid red;
+                     }
+                     </style>
+           <p id = "demo1"></p>
+           <p class = "redDiv1" id = "fail1"></p>
+           </div>
+         </form>
+
+
+      <p class="null"></p>
+    <div id="hometownTwo" style="display: none">
+        <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
+    </div>
+              </center>
             </div>
-            <style>
-                      .redDiv {
-                        display: none;
-                        border: 1px solid red;
-                      }
-                      </style>
-            <p id = "demo"></p>
-            <p class = "redDiv" id = "fail"></p>
+      </body>
+    </div>
+    </section>
+
+    </div>
+  </div>
 </div>
-          </form>
-        </div>
 
-       <p></p>
-                 <p class="null"></p>
-               </div>
-
-               <div id="Paris" class="tabcontent">
-                 <center>
-                   <form id = "GOAT1" role="form" class="contactForm">
-                     <label>Please upload a profile image of yourself here: </label><br>
-                         <label for="file-upload" class="custom-file-upload">
-                             Custom Upload
-                         </label>
-
-                         <br>
-                         <br>
-                         <input id="file-upload" type="file"/>
-
-
-
-
-        <div class="row justify-content-center mb-5 element-animate">
-          <div class="col-md-8 text-center">
-            <form  action="#">
-              <div class="form-group">
-                      <textarea name="" id="conName1" cols="30" rows="1" class="form-control" placeholder="Your Name"></textarea>
-                    </div>
-              <div class="form-group">
-                      <textarea name="" id="conEmail1" cols="30" rows="1" class="form-control" placeholder="Your Email"></textarea>
-                    </div>
-             <div class="form-group">
-                      <textarea name="" id="conExistingDesc1" cols="30" rows="1" class="form-control" placeholder="Your Phone Number"></textarea>
-                    </div>
-              <div class="form-group">
-                <textarea name="" id="conEdit1" cols="30" rows="1" class="form-control" placeholder="Your Availability Hours (Dates and Times)"></textarea>
-              </div>
-              <div class="form-group">
-                <textarea name="" id="conCost1" cols="30" rows="1" class="form-control" placeholder="Address"></textarea>
-              </div>
-              <div class="form-group">
-                <textarea name="" id="conGoal1" cols="30" rows="1" class="form-control" placeholder="Demographic Information(Age, Gender, Race, who you specialize with)"></textarea>
-              </div>
-              <div class="form-group">
-                <textarea name="" id="bio1" cols="30" rows="7" class="form-control" placeholder="Summary Of your Situation"></textarea>
-              </div>
-
-              <div class="row justify-content-center mb-5 element-animate">
-                <div class="col-md-8 text-center">
-                  <button class="btn btn-primary py-3 px-5" type="button" onClick="beastfunction2()">Submit</button>
-                </div>
-              </div>
-              <style>
-                        .redDiv1 {
-                          display: none;
-                          border: 1px solid red;
-                        }
-                        </style>
-              <p id = "demo1"></p>
-              <p class = "redDiv1" id = "fail1"></p>
-              </div>
-            </form>
-
-
-         <p class="null"></p>
-       <div id="hometownTwo" style="display: none">
-           <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
-       </div>
-                 </center>
-               </div>
-         </body>
-       </div>
-     </section>
-
-</div>
-</div>
 </section>
 
 <section class="ftco-section bg-light">
