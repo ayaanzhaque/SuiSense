@@ -4,10 +4,6 @@
 
 Using NLP to distinguish suicidal messages and provide personalized support.
 
-- **2nd Place Overall @ Geom Hacks 2020**
-
-- **Honorable Mention @ MLH Summer League SHDH 2020**
-
 Medium Article (Published on Codeburst.io): https://codeburst.io/suisense-an-innovative-approach-to-suicide-prevention-19cbdf150575
 
 Original Article: https://towardsdatascience.com/goodbye-world-4cc844197d51
