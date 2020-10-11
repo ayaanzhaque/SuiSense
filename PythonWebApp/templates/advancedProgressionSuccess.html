@@ -21,34 +21,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
-        <hr>
+
     <body>
 
-        <style>
-            body, html {
-	            height: 100%;
-            	font-family: 'Raleway', sans-serif;
-            }
-
-            p {
-                font-family: 'Raleway';
-            	font-size: 17px;
-            	line-height: 1.7;
-            	color: #666666;
-            	margin: 0px;
-            }
-
-            h3 {
-                font-family: 'Raleway';
-            	font-size: 30px;
-            	line-height: 1.7;
-            	color: #666666;
-            	margin: 0px;
-            }
-
-        </style>
-        <p>{{contents}}</p>
-        <p>To get further information and analysis, navigate to the advanced analysis page.</p>
+        <h1>Your Results</h1>
+<hr>
+        <p>Percentage change in text sentiment:</p>
+        <br>
+        <p style='font-size: 30px !important;'>{{intvar}}</p>
     </body>
 
     </center>

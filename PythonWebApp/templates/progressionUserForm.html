@@ -24,46 +24,41 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-
-
-
     </head>
 
     <body>
 
+        <body>
+
 <center>
-
 <div class="col-md-6 pr-md-5">
-<form action = "/success" method = "post" enctype = "multipart/form-data">
+<form action = "/progressionsuccess" id="givenForm" method = "post" enctype = "multipart/form-data">
 
+    <div class="form-group">
+        <textarea name='progTextField' id = "tb2" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the first message you would like analyzed."></textarea>
+    </div>
 
-     <label for="file-upload" class="btn btn-primary py-3 px-5">Upload Screenshot</label>
-          <input  id="file-upload" type="file"/ style = "display: none">
-     <label for="confirmation" id = "confirmation1" class="btn btn-primary py-3 px-5" style = "display: none" >Submit Text</label>
-          <input  id="confirmation" type="file"/ style = "display: none">
+<br><br>
+    <div id = "demo" style="display: none">
+        <iframe src="https://giphy.com/embed/3o7TKtnuHOHHUjR38Y" width="50" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        <br><br>
 
+    </div>
+<button type="button" id="nextBtn" class='btn btn-primary py-3 px-5' onclick="myFunction()">Submit</button>
+    <!--<input type="submit" class="btn btn-primary py-3 px-5" value="Submit Form">-->
 
-    <br><br>
-
-    <script>
-         if(document.getElementById("file-upload").files.length == 1) {
-
-              document.getElementById("confirmation1").style.display ="block";
-
-        }
-    </script>
-
-            <div class="form-group">
-<textarea name='contents' required id="" cols="30" rows="7" class="form-control" placeholder="Enter the text you would like analyzed."></textarea>
-</div>
-
-     <br><br>
-
-<input type="submit" class="btn btn-primary py-3 px-5" value="Submit Form">
 </form>
-
 </div>
 </center>
 
     </body>
+
+        <script>
+        function myFunction(){
+            document.getElementById("demo").style.display = "block";
+            document.getElementById("givenForm").submit();
+            return true;
+        }
+    </script>
+
 </html>
