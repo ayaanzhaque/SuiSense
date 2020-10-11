@@ -1,120 +1,394 @@
+<!DOCTYPE html>
+
 <html>
-    <center>
-        <head>
-            <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/open-iconic-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+<head>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/open-iconic-bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/ionicons.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.timepicker.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/ionicons.min.css') }}">
 
-    <style>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.timepicker.css') }}">
 
-.progressbar {
-  margin: 0;
-  padding: 0;
-  counter-reset: step;
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-.progressbar li {
-  list-style-type: none;
-  width: 16%;
-  float: left;
-  font-size: 12px;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  color: #7d7d7d;
-}
-.progressbar li:before {
-  width: 30px;
-  height: 30px;
-  content: counter(step);
-  counter-increment: step;
-  line-height: 30px;
-  border: 2px solid #7d7d7d;
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
-  text-align: center;
-  margin: 0 auto 10px auto;
-  border-radius: 50%;
-  background-color: white;
 }
-.progressbar li:after {
+
+em,
+strong {
+  font-weight: 700;
+}
+
+input {
+  display: none;
+}
+
+header p {
+  margin-bottom: 0;
+}
+
+section {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  margin-bottom: 2em;
+  padding: 0;
+}
+section:last-of-type {
+  margin-bottom: 0;
+}
+section article {
+  align-self: center;
+  width: 20em;
+  margin-bottom: 2em;
+}
+section article p, section article:last-of-type {
+  margin-bottom: 0;
+}
+
+/*
+*
+*
+START // CHART'S RULES
+ -> "if you're picking code, don't forget the variables :)"
+*/
+.chart {
+  font-size: 1em;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-perspective-origin: 50% 50%;
+          perspective-origin: 50% 50%;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
+}
+
+.givenBar {
+  font-size: 1em;
+  position: relative;
+  height: 10em;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: rotateX(60deg) rotateY(0deg);
+          transform: rotateX(60deg) rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.givenBar .face {
+  font-size: 2em;
+  position: relative;
   width: 100%;
-  height: 2px;
-  content: '';
+  height: 2em;
+  background-color: rgba(254, 254, 254, 0.3);
+}
+.givenBar .face.side-a, .givenBar .face.side-b {
+  width: 2em;
+}
+.givenBar .side-a {
+  -webkit-transform: rotateX(90deg) rotateY(-90deg) translateX(2em) translateY(1em) translateZ(1em);
+          transform: rotateX(90deg) rotateY(-90deg) translateX(2em) translateY(1em) translateZ(1em);
+}
+.givenBar .side-b {
+  -webkit-transform: rotateX(90deg) rotateY(-90deg) translateX(4em) translateY(1em) translateZ(-1em);
+          transform: rotateX(90deg) rotateY(-90deg) translateX(4em) translateY(1em) translateZ(-1em);
   position: absolute;
-  background-color: #7d7d7d;
-  top: 15px;
-  left: -50%;
-  z-index: -1;
+  right: 0;
+}
+.givenBar .side-0 {
+  -webkit-transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(-1em);
+          transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(-1em);
+}
+.givenBar .side-1 {
+  -webkit-transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(3em);
+          transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em) translateZ(3em);
+}
+.givenBar .top {
+  -webkit-transform: rotateX(0deg) rotateY(0) translateX(0em) translateY(4em) translateZ(2em);
+          transform: rotateX(0deg) rotateY(0) translateX(0em) translateY(4em) translateZ(2em);
+}
+.givenBar .floor {
+  box-shadow: 0 0.1em 0.6em rgba(0, 0, 0, 0.3), 0.6em -0.5em 3em rgba(0, 0, 0, 0.3), 1em -1em 8em #fefefe;
 }
 
-.progressbar li:first-child:after {
-  content: none;
-}
-.progressbar li.activeBar {
-  color: green;
-}
-.progressbar li.activeBar:before {
-  border-color: #55b776;
-}
-.progressbar li.activeBar + li:after {
-  background-color: #55b776;
+.growing-givenBar {
+  -webkit-transition: all 1.0s ease-in-out;
+  transition: all 1.0s ease-in-out;
+  background-color: rgba(236, 0, 140, 0.6);
+  width: 100%;
+  height: 2em;
 }
 
-    </style>
-    </head>
+.givenBar.white .side-a,
+.givenBar.white .growing-givenBar {
+  background-color: #6a28ff;
+}
+.givenBar.white .side-0 .growing-givenBar {
+  box-shadow: -0.5em -1.5em 4em #fefefe;
+}
+.givenBar.white .floor .growing-givenBar {
+  box-shadow: 0em 0em 2em #fefefe;
+}
 
-    <body>
+.givenBar-25 .growing-givenBar, input[id='pos-0']:checked ~ .chart .growing-givenBar {
+  width: 1%;
+}
 
+.givenBar-25 .growing-givenBar, input[id='pos-1']:checked ~ .chart .growing-givenBar {
+  width: 16.66%;
+}
+
+.givenBar-75 .growing-givenBar, input[id='pos-2']:checked ~ .chart .growing-givenBar {
+  width: 33.33%;
+}
+
+.givenBar-75 .growing-givenBar, input[id='pos-3']:checked ~ .chart .growing-givenBar {
+  width: 50%;
+}
+
+.givenBar-100 .growing-givenBar, input[id='pos-4']:checked ~ .chart .growing-givenBar {
+  width: 66.66%;
+}
+
+.givenBar-100 .growing-givenBar, input[id='pos-5']:checked ~ .chart .growing-givenBar {
+  width: 83.33%;
+}
+
+.givenBar-100 .growing-givenBar, input[id='pos-6']:checked ~ .chart .growing-givenBar {
+  width: 100%;
+}
+
+.chart.grid {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+.actions {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  margin-bottom: 0;
+  padding-bottom: 2em;
+  border-bottom: 1px dotted rgba(68, 68, 68, 0.4);
+}
+
+
+input[id='pos-0']:checked ~ .actions label[for='pos-0'],
+input[id='pos-1']:checked ~ .actions label[for='pos-1'],
+input[id='pos-2']:checked ~ .actions label[for='pos-2'],
+input[id='pos-3']:checked ~ .actions label[for='pos-3'] {
+  color: #76c900;
+  border: 1px solid #031523;
+  background-color: #0a4069;
+}
+
+    .progressbar {
+      margin: 0;
+      padding: 0;
+      counter-reset: step;
+    }
+    .progressbar li {
+      list-style-type: none;
+      width: 25%;
+      float: left;
+      font-size: 12px;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      color: #7d7d7d;
+    }
+
+    .progressbar li:before {
+      width: 30px;
+      height: 30px;
+      content: counter(step);
+      counter-increment: step;
+      line-height: 30px;
+      border: 2px solid #7d7d7d;
+      display: block;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      border-radius: 50%;
+      background-color: white;
+    }
+
+    .progressbar li:after {
+      width: 100%;
+      height: 2px;
+      content: '';
+      position: absolute;
+      background-color: #7d7d7d;
+      top: 15px;
+      left: -50%;
+      z-index: -1;
+    }
+
+    .progressbar li:first-child:after {
+      content: none;
+    }
+    .progressbar li.activeBar {
+      color: #6a28ff;
+    }
+    .progressbar li.activeBar:before {
+      border-color: #6a28ff;
+      background-color: #6a28ff;
+      color: white;
+    }
+    .progressbar li.activeBar + li:after {
+      background-color: #6a28ff;
+    }
+
+</style>
+</head>
+
+<body>
+
+
+
+<div class="container">
+<center>
         <h1>Your Results</h1>
-        <hr>
+</center>
+    <br>
+  <section>
+      <article>
+          <input type="radio" name="switch-pos" id="pos-0" checked>
+          <input type="radio" name="switch-pos" id="pos-1">
+          <input type="radio" name="switch-pos" id="pos-2">
+          <input type="radio" name="switch-pos" id="pos-3">
+          <input type="radio" name="switch-pos" id="pos-4">
+          <input type="radio" name="switch-pos" id="pos-5">
+          <input type="radio" name="switch-pos" id="pos-6">
+          <div class="chart">
+              <div class="givenBar givenBar-30 white">
+                  <div class="face top">
+                      <div class="growing-givenBar"></div>
+                  </div>
+                  <div class="face side-0">
+                      <div class="growing-givenBar"></div>
+                  </div>
+                  <div class="face floor">
+                      <div class="growing-givenBar"></div>
+                  </div>
+                  <div class="face side-a"></div>
+                  <div class="face side-b"></div>
+                  <div class="face side-1">
+                      <div class="growing-givenBar"></div>
+                  </div>
+              </div>
+          </div>
+          <!--<nav class="actions">
+            <button onclick="myFunction()">Try it</button>
+          </nav>-->
+      </article>
+  </section>
+<center>
+    <p id='stageReal' style='font-size: 25px !important;'><b></b></p>
+    <p id='stageDesc'></p>
+</center>
 
-    <div class="container">
+
+</div>
+
+<div class="container">
+    <center>
+
+
+        <h1>What's next?</h1>
+        <br>
         <ul class="progressbar">
-            <li id='barOne'>Falling short of expectations</li>
-            <li id='barTwo'>Attributions to self</li>
-            <li id='barThree'>High Self-Awareness</li>
-            <li id='barFour'>Negative Affect</li>
-            <li id='barFive'>Cognitive Deconstruction</li>
-            <li id='barSix'>Disinhibition</li>
+            <li id='barOne' class='activeBar'>Initial Analysis</li>
+            <li id='barTwo' class='activeBar'>Baseline Analysis</li>
+            <li id='barThree' class='activeBar'>Progression Analysis</li>
+            <li id='barFive'>Professional Support</li>
         </ul>
-    </div>
+        <br>
+        <br>
+        <br>
+            <p>
+            You've completed the initial, baseline, and progression analyses. Next, use our pairing feature to find the best psychologist possible for your loved one's unique situation.
+            </p>
+            </center>
+        </div>
 
-        <p>{{contents}}</p>
-        <p>Percentage: {{intvar}}</p>
-    </body>
+</body>
 
-    </center>
+<script>
 
-    <script>
-        var contents = {{contents}};
-        if (contents==1) {
-            document.getElementById("barOne").classList.add('activeBar');
-        } else if (contents==2) {
-            document.getElementById("barTwo").classList.add('activeBar');
-        } else if (contents==3) {
-            document.getElementById("BarThree").classList.add('activeBar');
-        } else if (contents==4) {
-            document.getElementById("barFour").classList.add('activeBar');
-        } else if (contents==5) {
-            document.getElementById("barFive").classList.add('activeBar');
-        } else if (contents==6) {
-            document.getElementById("barSix").classList.add('activeBar');
+contents = {{contents}};
+
+    if (contents=='1') {
+        document.getElementById("stageReal").innerHTML = "Stage 1 (Falling short of expectations):";
+        document.getElementById("stageDesc").innerHTML = "A decrease in standard of life and experiences is often the initial reason for depression beginning. This causes people to fall short of their expectations for a multitude of reasons. Look for any changes in the person’s life that may have caused the initial change in personality and mood.";
+    } else if (contents=='2') {
+        document.getElementById("stageReal").innerHTML = "Stage 2 (Attributions to self):";
+        document.getElementById("stageDesc").innerHTML = "Across cultures, self blame and self degradation are primary factors for worsening depression. Low self esteem is the culprit for patients in this stage, and low self esteem causes patients to believe others also think low of themselves. Consider if your loved one has verbally degraded themselves to you, and if so, change their perception and make it clear people don’t actually think low of them.";
+    } else if (contents=='3') {
+        document.getElementById("stageReal").innerHTML = "Stage 3 (High Self-Awareness):";
+        document.getElementById("stageDesc").innerHTML = "Self awareness is in comparison of self with standards, and it is similar to stage 1 and 2, to a worsened degree. During this stage, patients will become more aware of their flaws and what makes them unhappy, and simply accept their flaws as problems. Identify what your loved one has mentioned as of recent and try to confirm whether they have degraded themselves but are hopeless about it as well.";
+    } else if (contents=='4') {
+        document.getElementById("stageReal").innerHTML = "Stage 4 (Negative Affect):";
+        document.getElementById("stageDesc").innerHTML = "People begin feeling anxiety around issues such as guilt, self-blame, and more that begin leading to mildly suicidal thoughts. The person is losing cognitive consciousness and traditional mental pain cannot go any further. Since cognitive therapy isn’t as achievable, the only ways to escape their pain are through drugs, sleep, and death, with death being the only permanent fix.";
+    } else if (contents=='5') {
+        document.getElementById("stageReal").innerHTML = "Stage 5 (Cognitive Deconstruction):";
+        document.getElementById("stageDesc").innerHTML = "A person’s mental state will begin destabilizing, and they will begin slipping into a state resembling boredom. This allows them to detach themselves from thinking about the reason for depression and suicide and blocking them off from the root issue. Watch for your loved one seeming emotionless, focusing strongly on concrete and simple (perhaps boring) tasks, and refusing to think about the future.";
+    } else if (contents=='6') {
+        document.getElementById("stageReal").innerHTML = "Stage 6 (Disinhibition):";
+        document.getElementById("stageDesc").innerHTML = "Now that the mental stage is set, the only separation from suicide is the final act. People will begin focusing simply on the task of killing themselves instead of the high-level thinking behind such a decision (e.g. leaving loved ones behind). Watch your friend if they have a high level of pain tolerance, have been abused in the past, and more flags preparing them for the physical act of suicide.";
+    }
+
+setTimeout(function(){
+
+    if (contents=='1') {
+        document.getElementById('pos-1').setAttribute('checked', true);
+       } else if (contents=='2') {
+        document.getElementById('pos-2').setAttribute('checked', true);
+        } else if (contents=='3') {
+        document.getElementById('pos-3').setAttribute('checked', true);
+        } else if (contents=='4') {
+        document.getElementById('pos-4').setAttribute('checked', true);
+        } else if (contents=='5') {
+        document.getElementById('pos-5').setAttribute('checked', true);
+        } else if (contents=='6') {
+        document.getElementById('pos-6').setAttribute('checked', true);
         }
-    </script>
+
+}, 1000);
+</script>
+
+<script>
+
+
+
+
+
+</script>
 
 </html>
