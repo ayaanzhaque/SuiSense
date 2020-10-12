@@ -240,31 +240,31 @@ A person’s mental state will begin destabilizing, and they will begin slipping
                 </div>
                 <br>
                 <table>
-                  <tr>
+                  <tr id = "nodepression">
                     <th>Level of Depression</th>
                     <th>Total Score</th>
                   </tr>
-                  <tr>
+                  <tr id = "no">
                     <td>No Depression</td>
                     <td>0-5</td>
                   </tr>
-                  <tr>
+                  <tr id = "normal">
                     <td>Normal but unhappy</td>
                     <td>6-10</td>
                   </tr>
-                  <tr>
+                  <tr id = "mild">
                     <td>Mild depression</td>
                     <td>11-25</td>
                   </tr>
-                  <tr>
+                  <tr id = "moderate">
                     <td>Moderate depression</td>
                     <td>26-50</td>
                   </tr>
-                  <tr>
+                  <tr id = "severe">
                     <td>Severe depression</td>
                     <td>51-75</td>
                   </tr>
-                  <tr>
+                  <tr id = "extreme">
                     <td>Extreme depression</td>
                     <td>76-100</td>
                   </tr>
@@ -434,6 +434,24 @@ A person’s mental state will begin destabilizing, and they will begin slipping
 
                 function Score() {
                   document.getElementById("score").innerHTML = "Total : " + calculate_total();
+                  if(calculate_total() >= 0 && calculate_total() <= 5){
+                    document.getElementById("no").style.fontWeight="bold";
+                  }
+                  else if(calculate_total() >= 6 && calculate_total() <= 10){
+                    document.getElementById("normal").style.fontWeight="bold";
+                  }
+                  else if(calculate_total() >= 11 && calculate_total() <= 25){
+                    document.getElementById("mild").style.fontWeight="bold";
+                  }
+                  else if(calculate_total() >= 26 && calculate_total() <= 50){
+                    document.getElementById("moderate").style.fontWeight="bold";
+                  }
+                  else if(calculate_total() >= 51 && calculate_total() <= 75){
+                    document.getElementById("severe").style.fontWeight="bold";
+                  }
+                  else if(calculate_total() >= 76 && calculate_total() <= 100){
+                    document.getElementById("extreme").style.fontWeight="bold";
+                  }
                 }
 
 
