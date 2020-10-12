@@ -32,6 +32,11 @@ from tensorflow import keras
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
+#DELETE THIS ASAP -------------------------------------------
+@app.route("/testing", methods=["GET", "POST"])
+def testProgressBar():
+    return render_template("testProgress.html")
+
 #BERT BINARY MODEL (/progression) ------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -43,7 +48,9 @@ def uploadProgression():
 @app.route("/progressionsuccess",methods=["POST"])
 def progSuccess():
     global stProg
-    s = request.form['progTextField']
+    text = request.form['progTextField']
+    s = text[0:128]
+
     final_model = keras.models.load_model('/home/suiSense/my_site/final_regular_model.h5')
     realSuicidal = "According to our algorithm, the text has been classified as suicidal."
     realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
@@ -105,7 +112,9 @@ def advancedProg():
 @app.route("/advancedprogressionsuccess",methods=["POST"])
 def advancedProgSuccess():
     global stProg
-    s = request.form['baselineOne'] + request.form['baselineTwo'] + request.form['baselineThree']
+    text = request.form['baselineOne'] + request.form['baselineTwo'] + request.form['baselineThree']
+    s = text[0:128]
+
     final_model = keras.models.load_model('/home/suiSense/my_site/final_regular_model.h5')
     realSuicidal = "According to our algorithm, the text has been classified as suicidal."
     realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
@@ -161,7 +170,9 @@ def realProgression():
 @app.route("/realprogressionsuccess",methods=["POST"])
 def realProgressionSuccess():
     global stProg
-    s = request.form['progTextFieldOne'] + request.form['progTextFieldTwo'] + request.form['progTextFieldThree']
+    text = request.form['progTextFieldOne'] + request.form['progTextFieldTwo'] + request.form['progTextFieldThree']
+    s = text[0:128]
+
     final_model = keras.models.load_model('/home/suiSense/my_site/final_regular_model.h5')
 
 
@@ -202,22 +213,22 @@ def realProgressionSuccess():
     predictionPercentage = predictions[0][0] * 100
 
     if (0.0 < predictions <= 0.166):
-        return render_template("realprogressionsuccess.html",contents="Stage 1: Falling short of expectations", intvar=predictionPercentage)
+        return render_template("realprogressionsuccess.html",contents='1', intvar=predictionPercentage)
 
     elif (0.166 < predictions <= 0.333):
-        return render_template("realprogressionsuccess.html",contents="Stage 2: Attributions to self", intvar=predictionPercentage)
+        return render_template("realprogressionsuccess.html",contents='2', intvar=predictionPercentage)
 
     elif (0.333 < predictions <= 0.500):
-        return render_template("realprogressionsuccess.html",contents="Stage 3: High Self-Awareness", intvar=predictionPercentage)
+        return render_template("realprogressionsuccess.html",contents='3', intvar=predictionPercentage)
 
     elif (0.500 < predictions <= 0.667):
-        return render_template("realprogressionsuccess.html",contents="Stage 4: Negative Affect", intvar=predictionPercentage)
+        return render_template("realprogressionsuccess.html",contents='4', intvar=predictionPercentage)
 
     elif (0.667 < predictions <= 0.833):
-        return render_template("realprogressionsuccess.html",contents="Stage 5: Cognitive Deconstruction", intvar=predictionPercentage)
+        return render_template("realprogressionsuccess.html",contents='5', intvar=predictionPercentage)
 
     elif (0.833 < predictions <= 1.000):
-        return render_template("realprogressionsuccess.html",contents="Stage 6: Disinhibition", intvar=predictionPercentage)
+        return render_template("realprogressionsuccess.html",contents='6', intvar=predictionPercentage)
 
 
 
@@ -247,7 +258,7 @@ def upload():
 def success():
         h5file =  "/home/suiSense/my_site/final.h5"
         realSuicidal = "According to our algorithm, the text has been classified as suicidal."
-        realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
+        realDepression = "According to our algorithm, the text has been classified as depressive."
 
         stOne=request.form['contents']
         stTwo = stOne.lower()
