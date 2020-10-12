@@ -354,9 +354,64 @@ display: center;
                             display: none;
                             border: 1px solid red;
                           }
+
+                          .progressbar {
+margin: 0;
+padding: 0;
+counter-reset: step;
+}
+.progressbar li {
+list-style-type: none;
+width: 25%;
+float: left;
+font-size: 12px;
+position: relative;
+text-align: center;
+text-transform: uppercase;
+color: #7d7d7d;
+}
+.progressbar li:before {
+width: 30px;
+height: 30px;
+content: counter(step);
+counter-increment: step;
+line-height: 30px;
+border: 2px solid #7d7d7d;
+display: block;
+text-align: center;
+margin: 0 auto 10px auto;
+border-radius: 50%;
+background-color: white;
+}
+.progressbar li:after {
+width: 100%;
+height: 2px;
+content: '';
+position: absolute;
+background-color: #7d7d7d;
+top: 15px;
+left: -50%;
+z-index: -1;
+}
+
+.progressbar li:first-child:after {
+content: none;
+}
+.progressbar li.activeBar {
+color: #6a28ff;
+}
+.progressbar li.activeBar:before {
+border-color: #6a28ff;
+background-color: #6a28ff;
+color: white;
+}
+.progressbar li.activeBar + li:after {
+background-color: #6a28ff;
+}
                           </style>
                 <p id = "demo1"></p>
                 <p class = "redDiv1" id = "fail1"></p>
+
                 <script>
                 function beastfunction2(){
                 var name = document.getElementById("conName1").value;
@@ -403,6 +458,7 @@ display: center;
                 document.getElementById("fail1").style.border = "1px solid white";
                 document.getElementById("GOAT1").reset()
 
+
               }
 
               }
@@ -415,6 +471,7 @@ display: center;
       <p class="null"></p>
     <div id="hometownTwo" style="display: none">
         <p class="hometown">Thank you for submitting your report! You should receive an email notification when our system has found a match.</p>
+
     </div>
               </center>
             </div>
@@ -517,7 +574,7 @@ display: center;
           <div class="col-md">
             <div class="ftco-footer-widget mb-4 bg-primary p-4">
               <h2 class="ftco-heading-2">SuiSense</h2>
-              <p>Utilizing AI to provide early detection of suicide to provide crucial support.</p>
+              <p>Using Artificial Intelligence to distinguish between suicidal and depressive messages</p>
             </div>
           </div>
           <div class="col-md">
