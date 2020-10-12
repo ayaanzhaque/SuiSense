@@ -436,21 +436,28 @@ A person’s mental state will begin destabilizing, and they will begin slipping
                   document.getElementById("score").innerHTML = "Total : " + calculate_total();
                   if(calculate_total() >= 0 && calculate_total() <= 5){
                     document.getElementById("no").style.fontWeight="bold";
+                    document.getElementById("no").style.textDecoration="underline";
+
                   }
                   else if(calculate_total() >= 6 && calculate_total() <= 10){
                     document.getElementById("normal").style.fontWeight="bold";
+                    document.getElementById("normal").style.textDecoration="underline";
                   }
                   else if(calculate_total() >= 11 && calculate_total() <= 25){
                     document.getElementById("mild").style.fontWeight="bold";
+                    document.getElementById("mild").style.textDecoration="underline";
                   }
                   else if(calculate_total() >= 26 && calculate_total() <= 50){
                     document.getElementById("moderate").style.fontWeight="bold";
+                    document.getElementById("moderate").style.textDecoration="underline";
                   }
                   else if(calculate_total() >= 51 && calculate_total() <= 75){
                     document.getElementById("severe").style.fontWeight="bold";
+                    document.getElementById("severe").style.textDecoration="underline";
                   }
                   else if(calculate_total() >= 76 && calculate_total() <= 100){
                     document.getElementById("extreme").style.fontWeight="bold";
+                    document.getElementById("extreme").style.textDecoration="underline";
                   }
                 }
 
