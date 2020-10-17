@@ -35,7 +35,7 @@
 <form action = "/realprogressionsuccess" id="givenForm" method = "post" enctype = "multipart/form-data">
 
     <div class="form-group">
-        <textarea name='progTextFieldOne' id = "tb2" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the first message you would like analyzed."></textarea>
+        <textarea name='progTextFieldOne' id = "tb1" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the first message you would like analyzed."></textarea>
     </div>
     <br>
     <div class="form-group">
@@ -43,7 +43,7 @@
     </div>
     <br>
     <div class="form-group">
-        <textarea name='progTextFieldThree' id = "tb2" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the third message you would like analyzed."></textarea>
+        <textarea name='progTextFieldThree' id = "tb3" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the third message you would like analyzed."></textarea>
     </div>
 
 <br><br>
@@ -54,6 +54,16 @@
     </div>
 <button type="button" id="nextBtn" class='btn btn-primary py-3 px-5' onclick="myFunction()">Submit</button>
     <!--<input type="submit" class="btn btn-primary py-3 px-5" value="Submit Form">-->
+    <style>
+                        .redDiv {
+                          display: none;
+                          border: 1px solid red;
+                        }
+                        </style>
+                        <br>
+                        <br>
+                        <br>
+              <p class = "redDiv" id = "fail"></p>
 
 </form>
 </div>
@@ -63,9 +73,31 @@
 
         <script>
         function myFunction(){
-            document.getElementById("demo").style.display = "block";
+            var tb1 = document.getElementById("tb1").value;
+             var name = document.getElementById("tb2").value;
+             var tb3 = document.getElementById("tb3").value;
+
+            if(tb1 == ""){
+                document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            }
+              else if (name == "") {
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            }
+            else if (tb3 == "") {
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            }
+            else {
+              document.getElementById("demo").style.display = "block";
+                            document.getElementById("fail").style.display = "none";
+
             document.getElementById("givenForm").submit();
             return true;
+
+
+            }
         }
     </script>
 
