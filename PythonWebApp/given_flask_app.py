@@ -173,8 +173,7 @@ def realProgressionSuccess():
     text = request.form['progTextFieldOne'] + request.form['progTextFieldTwo'] + request.form['progTextFieldThree']
     s = text[0:128]
 
-    final_model = keras.models.load_model('/home/suiSense/my_site/final_regular_model.h5')
-
+    final_model = keras.models.load_model('/home/suiSense/my_site/progression_model.h5')
 
     max_seq_length = 128  # Your choice here.
     input_word_ids = tf.keras.layers.Input(shape=(max_seq_length,), dtype=tf.int32,
