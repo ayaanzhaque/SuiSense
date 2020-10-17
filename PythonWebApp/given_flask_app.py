@@ -93,10 +93,10 @@ def progSuccess():
     predictionPercentage = predictions[0][0] * 100
 
     if (0.0 < predictions <= 0.500):
-        return render_template("progressionSuccess.html",contents=realDepression, intvar=predictionPercentage)
+        return render_template("progressionSuccess.html",contents="depression", intvar=predictionPercentage)
 
     elif (0.500 < predictions <= 1.000):
-        return render_template("progressionSuccess.html",contents=realSuicidal, intvar=predictionPercentage)
+        return render_template("progressionSuccess.html",contents="suicidal", intvar=predictionPercentage)
 
 
 
