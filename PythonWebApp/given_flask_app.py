@@ -211,22 +211,40 @@ def realProgressionSuccess():
 
     predictionPercentage = predictions[0][0] * 100
 
-    if (0.0 < predictions <= 0.166):
+    # if (0.0 < predictions <= 0.166):
+    #     return render_template("realprogressionsuccess.html",contents='1', intvar=predictionPercentage)
+
+    # elif (0.166 < predictions <= 0.333):
+    #     return render_template("realprogressionsuccess.html",contents='2', intvar=predictionPercentage)
+
+    # elif (0.333 < predictions <= 0.500):
+    #     return render_template("realprogressionsuccess.html",contents='3', intvar=predictionPercentage)
+
+    # elif (0.500 < predictions <= 0.667):
+    #     return render_template("realprogressionsuccess.html",contents='4', intvar=predictionPercentage)
+
+    # elif (0.667 < predictions <= 0.833):
+    #     return render_template("realprogressionsuccess.html",contents='5', intvar=predictionPercentage)
+
+    # elif (0.833 < predictions <= 1.000):
+    #     return render_template("realprogressionsuccess.html",contents='6', intvar=predictionPercentage)
+
+    if (0.0 < predictions <= 0.3):
         return render_template("realprogressionsuccess.html",contents='1', intvar=predictionPercentage)
 
-    elif (0.166 < predictions <= 0.333):
+    elif (0.3 < predictions <= 0.375):
         return render_template("realprogressionsuccess.html",contents='2', intvar=predictionPercentage)
 
-    elif (0.333 < predictions <= 0.500):
+    elif (0.375 < predictions <= 0.45):
         return render_template("realprogressionsuccess.html",contents='3', intvar=predictionPercentage)
 
-    elif (0.500 < predictions <= 0.667):
+    elif (0.45 < predictions <= 0.525):
         return render_template("realprogressionsuccess.html",contents='4', intvar=predictionPercentage)
 
-    elif (0.667 < predictions <= 0.833):
+    elif (0.525 < predictions <= 0.6):
         return render_template("realprogressionsuccess.html",contents='5', intvar=predictionPercentage)
 
-    elif (0.833 < predictions <= 1.000):
+    elif (0.6 < predictions <= 1.0):
         return render_template("realprogressionsuccess.html",contents='6', intvar=predictionPercentage)
 
 
