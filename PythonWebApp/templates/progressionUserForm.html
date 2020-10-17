@@ -34,6 +34,15 @@
 <div class="col-md-6 pr-md-7">
 
 <form action = "/progressionsuccess" id="givenForm" method = "post" enctype = "multipart/form-data">
+    <label for="file-upload" class="btn btn-primary py-3 px-5">
+                               Upload Screenshot
+                           </label>
+                           <br>
+                           <br>
+                           <input id="file-upload" type="file"/ style="display: none;">
+                           <script>
+
+                           </script>
 
     <div class="form-group">
         <textarea name='progTextField' id = "tb2" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the first message you would like analyzed."></textarea>
@@ -47,6 +56,16 @@
     </div>
 <button type="button" id="nextBtn" class='btn btn-primary py-3 px-5' onclick="myFunction()">Submit</button>
     <!--<input type="submit" class="btn btn-primary py-3 px-5" value="Submit Form">-->
+<style>
+                        .redDiv {
+                          display: none;
+                          border: 1px solid red;
+                        }
+                        </style>
+                        <br>
+                        <br>
+                        <br>
+              <p class = "redDiv" id = "fail"></p>
 
 </form>
 
@@ -58,10 +77,23 @@
 
         <script>
         function myFunction(){
-            document.getElementById("demo").style.display = "block";
+            var name = document.getElementById("tb2").value;
+
+
+              if (name == "") {
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+            }
+            else {
+              document.getElementById("demo").style.display = "block";
             document.getElementById("givenForm").submit();
             return true;
-        }
+
+
+            }
+
+            }
+
     </script>
 
 </html>

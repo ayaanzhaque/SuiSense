@@ -72,28 +72,29 @@
     <h3>Baseline Texts</h3>
     <p>Input Messages From A Loved One Before Noticable Changes in Behavior</p>
     <div class="form-group">
-        <textarea name='baselineOne' required id="" cols="30" rows="7" class="form-control" placeholder="Enter the first message you would like analyzed."></textarea>
+        <textarea name='baselineOne' id = "tb1" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the first message you would like analyzed."></textarea>
     </div>
     <div class="form-group">
-        <textarea name='baselineTwo' required id="" cols="30" rows="7" class="form-control" placeholder="Enter the second message you would like analyzed."></textarea>
+        <textarea name='baselineTwo' id = "tb2" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the second message you would like analyzed."></textarea>
     </div>
     <div class="form-group">
-        <textarea name='baselineThree' required id="" cols="30" rows="7" class="form-control" placeholder="Enter the third message you would like analyzed."></textarea>
+        <textarea name='baselineThree' id = "tb3" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the third message you would like analyzed."></textarea>
     </div>
   </div>
   <div class="tab">
     <h3>Concerning Texts</h3>
     <p>Input Recent Messages From A Loved One</p>
     <div class="form-group">
-        <textarea name='recentOne' required id="" cols="30" rows="7" class="form-control" placeholder="Enter the first message you would like analyzed."></textarea>
+        <textarea name='recentOne' id = "tb01" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the first message you would like analyzed."></textarea>
     </div>
     <div class="form-group">
-        <textarea name='recentTwo' required id="" cols="30" rows="7" class="form-control" placeholder="Enter the second message you would like analyzed."></textarea>
+        <textarea name='recentTwo' id = "tb02" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the second message you would like analyzed."></textarea>
     </div>
     <div class="form-group">
-        <textarea name='recentThree' required id="" cols="30" rows="7" class="form-control" placeholder="Enter the third message you would like analyzed."></textarea>
+        <textarea name='recentThree' id = "tb03" required id="" cols="30" rows="7" class="form-control" placeholder="Enter the third message you would like analyzed."></textarea>
     </div>
   </div>
+
 
       <div id = "demo" style="display: none">
         <iframe src="https://giphy.com/embed/3o7TKtnuHOHHUjR38Y" width="50" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
@@ -107,6 +108,15 @@
       <button type="button" id="nextBtn" class='btn btn-primary py-3 px-5' onclick="nextPrev(1)">Next</button>
     </div>
   </div>
+    <style>
+                        .redDiv {
+                          display: none;
+                          border: 1px solid red;
+                        }
+                        </style>
+
+              <p class = "redDiv" id = "fail"></p>
+
   <!-- Circles which indicates the steps of the form: -->
   <div style="text-align:center;margin-top:40px;">
     <span class="step"></span>
@@ -152,10 +162,63 @@ function nextPrev(n) {
   currentTab = currentTab + n;
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
-      document.getElementById("demo").style.display = "block";
-    // ... the form gets submitted:
-    document.getElementById("regForm").submit();
-    return true;
+
+              var name = document.getElementById("tb1").value;
+              var email = document.getElementById("tb2").value;
+              var edesc = document.getElementById("tb3").value;
+              var ndesc = document.getElementById("tb01").value;
+              var cost = document.getElementById("tb02").value;
+              var goal = document.getElementById("tb03").value;
+
+
+
+              if (name == "") {
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+                             showTab(0);
+
+
+
+
+
+
+
+            } else if (email == "") {
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+                showTab(0);
+
+            } else if (edesc == "") {
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+                showTab(0);
+
+            } else if (ndesc == "") {
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+                showTab(0);
+
+            } else if (cost == "") {
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+                showTab(0);
+
+            }else if (goal == "") {
+              document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
+              document.getElementById("fail").style.display = "block";
+                showTab(0);
+
+            }
+            else {
+              document.getElementById("demo").style.display = "block";
+        // ... the form gets submitted:
+        document.getElementById("regForm").submit();
+            return true;
+
+            }
+
+
+
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
