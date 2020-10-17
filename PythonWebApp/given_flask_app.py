@@ -108,6 +108,18 @@ def progSuccess():
 def advancedProg():
     return render_template("advancedProgressionUserForm.html")
 
+    final_model = keras.models.load_model('/home/suiSense/my_site/final_regular_model.h5')
+    baseline_model = keras.models.load_model('/home/suiSense/my_site/final_depression_vs_nothing_model.h5')
+
+    # baseline_text = the combined 3 boxes from the baseline input
+    # final_text = the combined 3 boxes from the final input
+    baseline_pred = baseline_model.predict(baseline_text) # this is the baseline text prediction
+    final_pred = final_model.predict(final_text) # this is the second set of 3 images
+
+    difference = final_pred - baseline_pred # this is the difference, final - initial so its positive if it went up
+    # send the difference to the HTMl and there you can check if its above or below 0 and add logic of which arrow to show
+    # add some logic to change the size of the arrow based on how much the percentage changes
+        # do increments of 10, up to 40% lets say, and then just change the size of the arrow
 
 @app.route("/advancedprogressionsuccess",methods=["POST"])
 def advancedProgSuccess():
