@@ -105,7 +105,7 @@
 
 .down {
   -webkit-animation: downarrow 0.6s infinite alternate ease-in-out;
-  border-top:5em solid red;
+  border-top:5em solid green;
 }
 
 </style>
@@ -114,11 +114,19 @@
 
     <body>
 
-<div class="container">
+<div class="container" id='upArrowFinal'>
     <center>
         <h1>Your Results</h1>
         <a href="#" class="arrow up"></a>
-        <h4>18.3% increase in progression towards suicidality</h4>
+        <h4>{{absintvar}}% increase in progression towards suicidality</h4>
+    </center>
+</div>
+
+<div class="container" id='downArrowFinal'>
+    <center>
+        <h1>Your Results</h1>
+        <a href="#" class="arrow down"></a>
+        <h4>{{absintvar}}% decrease in progression towards suicidality</h4>
     </center>
 </div>
 
@@ -140,6 +148,18 @@
 
 
     </body>
+
+    <script>
+        var intvar = {{intvar}};
+
+        if (intvar > 0.0) {
+            document.getElementById('upArrowFinal').style.display = "block";
+            document.getElementById('downArrowFinal').style.display = "none";
+        } else if (intvar < 0.0) {
+            document.getElementById('downArrowFinal').style.display = "block";
+            document.getElementById('upArrowFinal').style.display = "none";
+        }
+    </script>
 
     </center>
 </html>
