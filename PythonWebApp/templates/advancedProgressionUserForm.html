@@ -32,11 +32,11 @@
 }
 
 
-
 /* Hide all steps by default: */
 .tab {
   display: none;
 }
+
 
 /* Make circles that indicate the steps of the form: */
 .step {
@@ -114,7 +114,7 @@
                           border: 1px solid red;
                         }
                         </style>
-
+<br>
               <p class = "redDiv" id = "fail"></p>
 
   <!-- Circles which indicates the steps of the form: -->
@@ -136,6 +136,7 @@ function showTab(n) {
   // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
+
   //... and fix the Previous/Next buttons:
   if (n == 0) {
     document.getElementById("prevBtn").style.display = "none";
@@ -156,73 +157,77 @@ function nextPrev(n) {
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
   if (n == 1 && !validateForm()) return false;
-  // Hide the current tab:
-  x[currentTab].style.display = "none";
+
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
-  // if you have reached the end of the form...
-  if (currentTab >= x.length) {
 
-              var name = document.getElementById("tb1").value;
+    if (currentTab == 0) {
+      x[0].style.display = "block";
+      x[1].style.display = "none";
+  } else if (currentTab == 1) {
+      x[1].style.display = "block";
+      x[0].style.display = "none";
+  }
+
+  else if (currentTab == 2) {
+      var name = document.getElementById("tb1").value;
               var email = document.getElementById("tb2").value;
               var edesc = document.getElementById("tb3").value;
               var ndesc = document.getElementById("tb01").value;
               var cost = document.getElementById("tb02").value;
               var goal = document.getElementById("tb03").value;
 
-
-
               if (name == "") {
               document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
               document.getElementById("fail").style.display = "block";
-                             showTab(0);
-
-
-
-
-
-
+              currentTab = 1;
 
             } else if (email == "") {
               document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
               document.getElementById("fail").style.display = "block";
-                showTab(0);
+              currentTab = 1;
+
+                //showTab(0);
 
             } else if (edesc == "") {
               document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
               document.getElementById("fail").style.display = "block";
-                showTab(0);
+              currentTab = 1;
+
 
             } else if (ndesc == "") {
               document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
               document.getElementById("fail").style.display = "block";
-                showTab(0);
+              currentTab = 1;
+
 
             } else if (cost == "") {
               document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
               document.getElementById("fail").style.display = "block";
-                showTab(0);
+              currentTab = 1;
+
 
             }else if (goal == "") {
               document.getElementById("fail").innerHTML = "Please fill out all questions to submit your report.";
               document.getElementById("fail").style.display = "block";
-                showTab(0);
+              currentTab = 1;
 
             }
             else {
-              document.getElementById("demo").style.display = "block";
-        // ... the form gets submitted:
-        document.getElementById("regForm").submit();
+            document.getElementById("demo").style.display = "block";
+            // ... the form gets submitted:
+            document.getElementById("regForm").submit();
             return true;
-
-            }
+  }
 
 
 
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
+
 }
+
 
 function validateForm() {
   // This function deals with validation of the form fields
