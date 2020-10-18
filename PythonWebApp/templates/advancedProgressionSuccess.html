@@ -108,6 +108,12 @@
   border-top:5em solid green;
 }
 
+.noChange {
+    width: 20%;
+    height: 20px;
+
+    background-color: gray;
+}
 </style>
 
     </head>
@@ -117,7 +123,7 @@
 <div class="container" id='upArrowFinal'>
     <center>
         <h1>Your Results</h1>
-        <a href="#" class="arrow up"></a>
+        <a class="arrow up"></a>
         <h4>{{absintvar}}% increase in progression towards suicidality</h4>
     </center>
 </div>
@@ -125,8 +131,16 @@
 <div class="container" id='downArrowFinal'>
     <center>
         <h1>Your Results</h1>
-        <a href="#" class="arrow down"></a>
+        <a class="arrow down"></a>
         <h4>{{absintvar}}% decrease in progression towards suicidality</h4>
+    </center>
+</div>
+
+<div class="container" id='noChangeID'>
+    <center>
+        <h1>Your Results</h1>
+        <a class="noChange"></a>
+        <h4>No change in progression towards suicidality</h4>
     </center>
 </div>
 
@@ -155,9 +169,16 @@
         if (intvar > 0.0) {
             document.getElementById('upArrowFinal').style.display = "block";
             document.getElementById('downArrowFinal').style.display = "none";
+            document.getElementById('noChangeID').style.display = "none";
+
         } else if (intvar < 0.0) {
             document.getElementById('downArrowFinal').style.display = "block";
             document.getElementById('upArrowFinal').style.display = "none";
+            document.getElementById('noChangeID').style.display = "none";
+        } else if (intvar == 0.0) {
+            document.getElementById('downArrowFinal').style.display = "none";
+            document.getElementById('upArrowFinal').style.display = "none";
+            document.getElementById('noChangeID').style.display = "block";
         }
     </script>
 

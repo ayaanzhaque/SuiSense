@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 from random import randint
 import joblib
+import math
+import requests
 
 import nltk
 from nltk.tokenize import RegexpTokenizer
@@ -39,7 +41,6 @@ def testProgressBar():
 
 #BERT BINARY MODEL (/progression) ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 @app.route("/progression", methods=["GET", "POST"])
 def uploadProgression():
     return render_template("progressionUserForm.html")
@@ -49,14 +50,16 @@ def uploadProgression():
 def progSuccess():
     global stProg
     text = request.form['progTextField']
-    s = text[0:128]
+    s = text[0:512]
 
     final_model = keras.models.load_model('/home/suiSense/my_site/final_regular_model.h5')
+
+
     realSuicidal = "According to our algorithm, the text has been classified as suicidal."
     realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
 
 
-    max_seq_length = 128  # Your choice here.
+    max_seq_length = 512  # Your choice here.
     input_word_ids = tf.keras.layers.Input(shape=(max_seq_length,), dtype=tf.int32,
                                        name="input_word_ids")
     input_mask = tf.keras.layers.Input(shape=(max_seq_length,), dtype=tf.int32,
@@ -98,6 +101,11 @@ def progSuccess():
     elif (0.500 < predictions <= 1.000):
         return render_template("progressionSuccess.html",contents="suicidal", intvar=predictionPercentage)
 
+    try:
+        reloadWebsite()
+    except:
+        print('reload failed')
+
 
 
 #BASELINE MODEL (/advancedprogression) ----------------------------------------------------------------------------
@@ -108,31 +116,24 @@ def progSuccess():
 def advancedProg():
     return render_template("advancedProgressionUserForm.html")
 
-    final_model = keras.models.load_model('/home/suiSense/my_site/final_regular_model.h5')
-    baseline_model = keras.models.load_model('/home/suiSense/my_site/final_depression_vs_nothing_model.h5')
-
-    # baseline_text = the combined 3 boxes from the baseline input
-    # final_text = the combined 3 boxes from the final input
-    baseline_pred = baseline_model.predict(baseline_text) # this is the baseline text prediction
-    final_pred = final_model.predict(final_text) # this is the second set of 3 images
-
-    difference = final_pred - baseline_pred # this is the difference, final - initial so its positive if it went up
-    # send the difference to the HTMl and there you can check if its above or below 0 and add logic of which arrow to show
-    # add some logic to change the size of the arrow based on how much the percentage changes
-        # do increments of 10, up to 40% lets say, and then just change the size of the arrow
 
 @app.route("/advancedprogressionsuccess",methods=["POST"])
 def advancedProgSuccess():
     global stProg
-    text = request.form['baselineOne'] + request.form['baselineTwo'] + request.form['baselineThree']
-    s = text[0:128]
+    #bringing in the text
+    baseline_text = request.form['baselineOne'] + ' ' + request.form['baselineTwo'] + ' ' + request.form['baselineThree']
+    final_text = request.form['recentOne'] + ' ' + request.form['recentTwo'] + ' ' + request.form['recentThree']
 
+    #text truncation for bert
+    baseline_text = baseline_text[0:512]
+    final_text = final_text[0:512]
+
+    #initializing models
     final_model = keras.models.load_model('/home/suiSense/my_site/final_regular_model.h5')
-    realSuicidal = "According to our algorithm, the text has been classified as suicidal."
-    realDepression = "According to our algorithm, the text has been classified as depression, not suicidal."
+    baseline_model = keras.models.load_model('/home/suiSense/my_site/baseline_model.h5')
 
-
-    max_seq_length = 128  # Your choice here.
+    #bringing in the bert model to apply for all the text
+    max_seq_length = 512
     input_word_ids = tf.keras.layers.Input(shape=(max_seq_length,), dtype=tf.int32,
                                        name="input_word_ids")
     input_mask = tf.keras.layers.Input(shape=(max_seq_length,), dtype=tf.int32,
@@ -142,33 +143,74 @@ def advancedProgSuccess():
     bert_layer = hub.KerasLayer("https://tfhub.dev/tensorflow/bert_en_uncased_L-12_H-768_A-12/1",
                             trainable=True)
     pooled_output, sequence_output = bert_layer([input_word_ids, input_mask, segment_ids])
-
     model = Model(inputs=[input_word_ids, input_mask, segment_ids], outputs=[pooled_output, sequence_output])
-
-    # See BERT paper: https://arxiv.org/pdf/1810.04805.pdf
-    # And BERT implementation convert_single_example() at https://github.com/google-research/bert/blob/master/run_classifier.py
-
-
     vocab_file = bert_layer.resolved_object.vocab_file.asset_path.numpy()
     do_lower_case = bert_layer.resolved_object.do_lower_case.numpy()
-
     tokenizer = FullTokenizer(vocab_file, do_lower_case)
 
-    stokens = tokenizer.tokenize(s)
-
-    stokens = ["[CLS]"] + stokens + ["[SEP]"]
-
-    input_ids = get_ids(stokens, tokenizer, max_seq_length)
-    input_masks = get_masks(stokens, max_seq_length)
-    input_segments = get_segments(stokens, max_seq_length)
-
+    #baseline model, baseline text
+    stokensOne = tokenizer.tokenize(baseline_text)
+    stokensOne = ["[CLS]"] + stokensOne + ["[SEP]"]
+    input_ids = get_ids(stokensOne, tokenizer, max_seq_length)
+    input_masks = get_masks(stokensOne, max_seq_length)
+    input_segments = get_segments(stokensOne, max_seq_length)
     pool_embs, all_embs = model.predict([[input_ids],[input_masks],[input_segments]])
+    fxOne = baseline_model.predict(pool_embs)
+    fxOne = fxOne[0][0]
 
-    predictions = final_model.predict(pool_embs)
+    #baseline model, suicidal text
+    stokensTwo = tokenizer.tokenize(final_text)
+    stokensTwo = ["[CLS]"] + stokensTwo + ["[SEP]"]
+    input_ids = get_ids(stokensTwo, tokenizer, max_seq_length)
+    input_masks = get_masks(stokensTwo, max_seq_length)
+    input_segments = get_segments(stokensTwo, max_seq_length)
+    pool_embs, all_embs = model.predict([[input_ids],[input_masks],[input_segments]])
+    fxTwo = baseline_model.predict(pool_embs)
+    fxTwo = fxTwo[0][0]
 
-    predictionPercentage = predictions[0][0] * 100
+    #suicidal model, baseline text
+    stokensThree = tokenizer.tokenize(baseline_text)
+    stokensThree = ["[CLS]"] + stokensThree + ["[SEP]"]
+    input_ids = get_ids(stokensThree, tokenizer, max_seq_length)
+    input_masks = get_masks(stokensThree, max_seq_length)
+    input_segments = get_segments(stokensThree, max_seq_length)
+    pool_embs, all_embs = model.predict([[input_ids],[input_masks],[input_segments]])
+    gxOne = final_model.predict(pool_embs)
+    gxOne = gxOne[0][0]
 
-    return render_template("advancedProgressionSuccess.html", intvar=predictionPercentage)
+    #suicidal model, suicidal text
+    stokensFour = tokenizer.tokenize(final_text)
+    stokensFour = ["[CLS]"] + stokensFour + ["[SEP]"]
+    input_ids = get_ids(stokensFour, tokenizer, max_seq_length)
+    input_masks = get_masks(stokensFour, max_seq_length)
+    input_segments = get_segments(stokensFour, max_seq_length)
+    pool_embs, all_embs = model.predict([[input_ids],[input_masks],[input_segments]])
+    gxTwo = final_model.predict(pool_embs)
+    gxTwo = gxTwo[0][0]
+
+    if (fxTwo > 0.5):
+        if (fxOne > 0.5):
+            predictionPercentage = (gxTwo - gxOne) * 100
+        else:
+            predictionPercentage = ((gxTwo + 1) - fxOne) * 100
+    else:
+        if (fxOne > 0.5):
+            predictionPercentage = (fxTwo - (gxOne + 1)) * 100
+        else:
+            predictionPercentage = (fxTwo - fxOne) * 100
+
+    significant_digits = 3
+    predictionPercentage = round(predictionPercentage, significant_digits - int(math.floor(math.log10(abs(predictionPercentage)))) - 1)
+
+    absPredictionPercentage = abs(predictionPercentage)
+
+    return render_template("advancedProgressionSuccess.html", intvar=predictionPercentage, absintvar=absPredictionPercentage, fxOne=fxOne, fxTwo=fxTwo, gxOne=gxOne, gxTwo=gxTwo)
+
+
+    try:
+        reloadWebsite()
+    except:
+        print('reload failed')
 
 
 
@@ -183,11 +225,11 @@ def realProgression():
 def realProgressionSuccess():
     global stProg
     text = request.form['progTextFieldOne'] + request.form['progTextFieldTwo'] + request.form['progTextFieldThree']
-    s = text[0:128]
+    s = text[0:512]
 
     final_model = keras.models.load_model('/home/suiSense/my_site/progression_model.h5')
 
-    max_seq_length = 128  # Your choice here.
+    max_seq_length = 512  # Your choice here.
     input_word_ids = tf.keras.layers.Input(shape=(max_seq_length,), dtype=tf.int32,
                                        name="input_word_ids")
     input_mask = tf.keras.layers.Input(shape=(max_seq_length,), dtype=tf.int32,
@@ -222,24 +264,6 @@ def realProgressionSuccess():
     predictions = final_model.predict(pool_embs)
 
     predictionPercentage = predictions[0][0] * 100
-
-    # if (0.0 < predictions <= 0.166):
-    #     return render_template("realprogressionsuccess.html",contents='1', intvar=predictionPercentage)
-
-    # elif (0.166 < predictions <= 0.333):
-    #     return render_template("realprogressionsuccess.html",contents='2', intvar=predictionPercentage)
-
-    # elif (0.333 < predictions <= 0.500):
-    #     return render_template("realprogressionsuccess.html",contents='3', intvar=predictionPercentage)
-
-    # elif (0.500 < predictions <= 0.667):
-    #     return render_template("realprogressionsuccess.html",contents='4', intvar=predictionPercentage)
-
-    # elif (0.667 < predictions <= 0.833):
-    #     return render_template("realprogressionsuccess.html",contents='5', intvar=predictionPercentage)
-
-    # elif (0.833 < predictions <= 1.000):
-    #     return render_template("realprogressionsuccess.html",contents='6', intvar=predictionPercentage)
 
     if (0.0 < predictions <= 0.3):
         return render_template("realprogressionsuccess.html",contents='1', intvar=predictionPercentage)
@@ -258,6 +282,11 @@ def realProgressionSuccess():
 
     elif (0.6 < predictions <= 1.0):
         return render_template("realprogressionsuccess.html",contents='6', intvar=predictionPercentage)
+
+    try:
+        reloadWebsite()
+    except:
+        print('reload failed')
 
 
 
@@ -278,73 +307,7 @@ progressionDict = {
 }
 
 
-@app.route("/", methods=["GET", "POST"])
-def upload():
-    return render_template("userForm.html")
-
-
-@app.route("/success",methods=["POST"])
-def success():
-        h5file =  "/home/suiSense/my_site/final.h5"
-        realSuicidal = "According to our algorithm, the text has been classified as suicidal."
-        realDepression = "According to our algorithm, the text has been classified as depressive."
-
-        stOne=request.form['contents']
-        stTwo = stOne.lower()
-        stStripped = stTwo.strip()
-        st = stStripped.replace(" ", "")
-        prediction = randint(0, 1)
-
-        model = joblib.load(h5file)
-        try:
-            text_array = pd.Series(request.form['contents'])
-            processed_text = processing_text(text_array)
-            processed_array = pd.Series(processed_text)
-            tvec_optimised = TfidfVectorizer(max_features=70, ngram_range=(1, 3),stop_words = 'english')
-            processed_text_tvec = tvec_optimised.fit_transform(processed_array).todense()
-            prediction = model.predict(processed_text_tvec)
-            Class = prediction[0]
-
-            if (Class == 1):
-                return render_template("success.html",contents=realSuicidal)
-            else:
-                return render_template("success.html",contents=realDepression)
-        except:
-            return render_template("success.html",contents= "For a proper result, we need a sequence of at least 70 words. Your phrase was most likely less. Try to get more phrases put together to get an accurate result.")
-
-
-
 #all general functions --------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-def prediction(model, text):
-    text_array = pd.Series(text)
-    processed_text = processing_text(text_array)
-    processed_array = pd.Series(processed_text)
-    tvec_optimised = TfidfVectorizer(max_features=70, ngram_range=(1, 3),stop_words = 'english')
-    processed_text_tvec = tvec_optimised.fit_transform(processed_array).todense()
-    prediction = model.predict(processed_text_tvec)
-    return(prediction[0])
-
-
-def processing_text(series_to_process):
-    new_list = []
-    tokenizer = RegexpTokenizer(r'(\w+)')
-    lemmatizer = WordNetLemmatizer()
-
-    for i in range(len(series_to_process)):
-        # tokenized item in a new list
-        dirty_string = (series_to_process)[i].lower()
-        words_only = tokenizer.tokenize(dirty_string) # words_only is a list of only the words, no punctuation
-        #Lemmatize the words_only
-        words_only_lem = [lemmatizer.lemmatize(i) for i in words_only]
-        # removing stop words
-        words_without_stop = [i for i in words_only_lem if i not in stopwords.words("english")]
-        # return seperated words
-        long_string_clean = " ".join(word for word in words_without_stop)
-        new_list.append(long_string_clean)
-        return new_list
-
 
 def get_masks(tokens, max_seq_length):
         """Mask for padding"""
@@ -371,3 +334,21 @@ def get_ids(tokens, tokenizer, max_seq_length):
     token_ids = tokenizer.convert_tokens_to_ids(tokens)
     input_ids = token_ids + [0] * (max_seq_length-len(token_ids))
     return input_ids
+
+def reloadWebsite():
+    username = 'suiSense'
+    token = 'ac02c511cd4bdeda55e51531167588d96034760a'
+
+    response = requests.get(
+        'https://www.pythonanywhere.com/api/v0/user/{username}/reload/'.format(
+            username=username
+        ),
+        headers={'Authorization': 'Token {token}'.format(token=token)}
+    )
+
+    if response.status_code == 200:
+        successreturn = 'reloaded OK'
+        return successreturn
+    else:
+        failreturn = 'reload failed'
+        return failedreturn
