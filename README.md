@@ -4,6 +4,8 @@
 
 Using Artificial Intelligence to distinguish between suicidal and depressive messages.
 
+[Medium Article](https://codeburst.io/suisense-an-innovative-approach-to-suicide-prevention-19cbdf150575)
+
 ## Overview of our Project
 
 SuiSense is a unique progressive web application that allows concerned family and friends to determine whether their struggling loved one is on the path to suicide. The core of our project is a Natural Language Processing model(sci-kit) that classifies a phrase someone says as representing suicidal tendencies, depression, or neither. Users can input text from their messaging conversations, memory of their in-person conversations, letters, diary entries, or screenshots. Classifying between suicide and depression is important because the implications and methods for support are completely different, but determining the difference is a precise task that is best dealt with through ML.  
