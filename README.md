@@ -12,7 +12,7 @@ Using Artificial Intelligence to distinguish between suicidal and depressive mes
 
 Demo: https://www.youtube.com/watch?v=QHpKJBVObhA
 
-Medium Article: (https://codeburst.io/suisense-an-innovative-approach-to-suicide-prevention-19cbdf150575)
+Medium Article: https://codeburst.io/suisense-an-innovative-approach-to-suicide-prevention-19cbdf150575
 
 ## Overview of our Project
 
