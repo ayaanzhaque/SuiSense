@@ -14,6 +14,8 @@ Demo: https://www.youtube.com/watch?v=QHpKJBVObhA
 
 Medium Article: https://codeburst.io/suisense-an-innovative-approach-to-suicide-prevention-19cbdf150575
 
+Disclaimer: This is a personal hackathon project, and is not a real, certified application. 
+
 ## Overview of our Project
 
 SuiSense is a progressive web application that uses Artificial Intelligence (AI) and Natural Language Processing (NLP) to distinguish between depressive and suicidal phrases and help concerned friends and family determine whether their struggling loved one is on the path to suicide. 
