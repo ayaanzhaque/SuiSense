@@ -2,6 +2,8 @@
 
 # [SuiSense](https://suisense.space/)
 
+**Disclaimer: This is a personal project currently in development, and is not a real, certified clinical application. Do not treat it as such.**
+
 Using Artificial Intelligence to distinguish between suicidal and depressive messages.
 
 - **4th Place @ Congressional App Challenge 2020**
@@ -13,8 +15,6 @@ Using Artificial Intelligence to distinguish between suicidal and depressive mes
 Demo: https://www.youtube.com/watch?v=QHpKJBVObhA
 
 Medium Article: https://codeburst.io/suisense-an-innovative-approach-to-suicide-prevention-19cbdf150575
-
-Disclaimer: This is a personal hackathon project, and is not a real, certified application. 
 
 ## Overview of our Project
 
