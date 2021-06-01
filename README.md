@@ -18,6 +18,8 @@ Medium Article: https://codeburst.io/suisense-an-innovative-approach-to-suicide-
 
 ## Overview of our Project
 
+![](https://github.com/ayaanzhaque/SuiSense/blob/master/sketches/regular-model-pipeline.png?raw=true)
+
 SuiSense is a progressive web application that uses Artificial Intelligence (AI) and Natural Language Processing (NLP) to distinguish between depressive and suicidal phrases and help concerned friends and family determine whether their struggling loved one is on the path to suicide. 
 
 SuiSense provides 4 key services to do so. The first, our Initial Screening model, determines
